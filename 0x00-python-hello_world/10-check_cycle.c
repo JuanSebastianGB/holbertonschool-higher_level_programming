@@ -9,19 +9,15 @@
  **/
 int check_cycle(listint_t *list)
 {
-	listint_t *slow, *quick;
+	listint_t *slow = list, *quick = list;
 
-	if (list == NULL || list->next == NULL)
-		return (0);
-	slow = list->next;
-	quick = slow->next;
-
-	while (quick != NULL && slow != NULL && list != NULL)
+	while (quick != NULL && slow != NULL && quick->next != NULL)
 	{
-		if (quick == slow)
-			return (1);
+		/* Making validations inside loop*/
 		slow = slow->next;
 		quick = quick->next->next;
+		if (quick == slow)
+			return (1);
 	}
 	return (0);
 }
