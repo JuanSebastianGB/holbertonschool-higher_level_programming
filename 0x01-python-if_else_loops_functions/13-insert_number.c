@@ -24,18 +24,9 @@ listint_t *insert_node(listint_t **head, int number)
 		*head = new_node;
 		return (new_node);
 	}
-	while (first->next != NULL)
-	{ /* If find a match where to fit*/
-		if ((new_node->n > first->n && new_node->n < first->next->n)
-		    || new_node->n == first->n)
-		{
-			new_node->next = first->next;
-			first->next = new_node;
-			return (new_node);
-		}
+	while (first != NULL && first->next != NULL && first->next->n < new_node->n)
 		first = first->next;
-	}
-	new_node = first->next;
-	first->next = new_node; /* case new node as the tail*/
+	new_node->next = first->next;
+	first->next = new_node;
 	return (new_node);
 }
