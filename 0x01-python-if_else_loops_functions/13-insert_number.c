@@ -18,9 +18,14 @@ listint_t *insert_node(listint_t **head, int number)
 		return (NULL);
 	new_node->n = number;
 	new_node->next = NULL;
-
+	if (first->n > new_node->n || !*head)
+	{ /* Case new is less than head*/
+		new_node->next = first;
+		*head = new_node;
+		return (new_node);
+	}
 	while (first->next != NULL)
-	{
+	{ /* If find a match where to fit*/
 		if ((new_node->n > first->n && new_node->n < first->next->n)
 		    || new_node->n == first->n)
 		{
