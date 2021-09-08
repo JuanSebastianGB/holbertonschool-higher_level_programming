@@ -23,11 +23,14 @@ listint_t *insert_node(listint_t **head, int number)
 	{
 		if ((new_node->n > first->n && new_node->n < first->next->n)
 		    || new_node->n == first->n)
+		{
+			new_node->next = first->next;
+			first->next = new_node;
 			return (new_node);
+		}
 		first = first->next;
 	}
 	new_node = first->next;
 	first->next = new_node; /* case new node as the tail*/
 	return (new_node);
-
 }
