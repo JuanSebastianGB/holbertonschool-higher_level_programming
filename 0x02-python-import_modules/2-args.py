@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     from sys import argv
+    """Print a list the elements with the  correspondent number
+    """
     lgth = len(argv) - 1
-    print("{:d} {:s}{:s}".format(
-        lgth, "arguments" if lgth > 2 else "argument",
-        "." if lgth == 1 else ":"))
+    if lgth == 0:
+        print("0 arguments.")
+    elif lgth == 1:
+        print("1 argument:")
+    else:
+        print("{:d} arguments:".format(lgth))
     for i, s in enumerate(argv):
         if i > 0:
-            print("{:d}: {:s}".format(i, s))
+            print("{}: {}".format(i, s))
