@@ -6,5 +6,5 @@ def print_list_integer(my_list=[]):
     Args:
         my_list (list, optional): [list of elements]. Defaults to [].
     """
-    for element in my_list[::-1]:
-        print(element)
+    for element in my_list:
+        print("{}".format(element))
