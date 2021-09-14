@@ -3,7 +3,7 @@
 /**
  * print_python_list_info - Function that print infromation about python list
  * @p: A object list named PyOject
- */
+ */ 
 void print_python_list_info(PyObject *p)
 {
 	PyObject *pyt;
@@ -18,8 +18,8 @@ void print_python_list_info(PyObject *p)
 	while (i < size)
 	{
 		printf("Element %d: ", i);
-		pyt = PyList_GetItem(p, i);
-		printf("%s\n", Py_TYPE(pyt)->tp_name);
+		obj = PyList_GetItem(p, i);
+		printf("%s\n", Py_TYPE(obj)->tp_name);
 		i++;
 	}
 }
