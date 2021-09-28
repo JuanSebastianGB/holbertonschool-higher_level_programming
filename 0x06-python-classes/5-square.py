@@ -29,7 +29,9 @@ class Square:
         return self.size ** 2
 
     def my_print(self):
+        """prints in stdout the square with the character #"""
+        from sys import stdout as out
         for i in range(self.__size):
             for j in range(self.__size):
-                print("#", end="")
+                print("#", end="", file=out)
             print("")
