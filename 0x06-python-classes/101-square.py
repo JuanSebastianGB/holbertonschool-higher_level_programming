@@ -59,6 +59,6 @@ class Square:
             print()
             return
 
-        return ("\n" * self.__position[1] + self.__size *
-                (" " * self.__position[0] +
-                 "#" * self.__size + "\n"))[:-1]
+        return "\n" * self.__position[1] + (self.__size *
+                                            (" " * self.__position[0] +
+                                             "#" * self.__size + "\n"))[:-1]
