@@ -56,8 +56,7 @@ class Square:
     def __str__(self):
         """Print of the class"""
         if self.size == 0:
-            print()
-            return
+            return ""
 
         return "\n" * self.__position[1] + (self.__size *
                                             (" " * self.__position[0] +
