@@ -52,4 +52,6 @@ class Rectangle:
 
     def __str__(self):
         """Return the printable representation of the object rectangle"""
+        if self.__height is 0 or self.__width is 0:
+            return ""
         return "\n".join([self.__width * "#" for i in range(self.__height)])
