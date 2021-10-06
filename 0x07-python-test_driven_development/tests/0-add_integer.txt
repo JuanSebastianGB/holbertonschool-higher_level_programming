@@ -1,0 +1,113 @@
+#0-add_integer.txt
+
+=====================================
+UNIT TEST FOR MODULE 0-add_integer.PY
+=====================================
+
+In this module is implemented a function to addition of 2 numbers ``add_integer(a, b=98)```
+
+=============
+HOW TO USE IT
+=============
+```add_integer(...)``` Return an addition of the 2 gived inputs.
+
+    ::
+    >>> add_integer= __import__('0-add_integer').add_integer
+    >>> add_integer(10, 20)
+    30
+
+The function works with negatives too.
+    ::
+    >>> add_integer(-10, -20)
+    -30
+
+The function works with float numbers
+    ::
+    >>> add_integer(10.2, -50)
+    -40
+
+Working without the optional argument
+    ::
+    >>> add_integer(-110.2)
+    -12
+
+Checking with several values
+    ::
+    >>> [add_integer(el, el * 100) for el in range (4)]
+    [0, 101, 202, 303]
+
+
+==================
+More than 2 inputs
+==================
+
+Gived 3 numbers instead 2
+    ::
+    >>> add_integer(320, "520", 1)
+    Traceback (most recent call last):
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+==================
+Not inputs
+==================
+
+    ::
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+==================
+NOT NUMERIC INPUTS
+==================
+
+Both inputs are text, Handle error with the first element evaluated
+    ::
+    >>> add_integer("a", "b")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+First input is text
+    ::
+    >>> add_integer("a", 320)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Second input is text
+    ::
+    >>> add_integer(320, "a")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+None is passed like input
+    ::
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+==========================
+CONVERTION TO FLOAT CASES
+==========================
+
+Trying to implement the convertion of not number input into float
+    ::
+    >>> add_integer(float('NaN'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+Trying to implement the convertion of not number input into float in the second argument into float
+    ::
+    >>> add_integer(50, float('NaN'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+Trying to implement the convertion infinite number in the first input
+    ::
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+Trying to implement the convertion infinite number in the second input
+    ::
+    >>> add_integer(50, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
