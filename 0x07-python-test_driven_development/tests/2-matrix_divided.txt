@@ -1,4 +1,4 @@
-2-matrix_divided.txt
+# 2-matrix_divided.txt
 
 ========================================
 UNIT TEST FOR MODULE 2-matrix_divided.PY
@@ -10,25 +10,14 @@ In this module is implemented a function to divide all the elements of a gived m
 HOW TO USE IT
 =============
 
+``matrix_divided(...)`` Return matrix with the values divided by a gived input.
+
+# Checking all values with an exact expected like output, but getting .2 decimals 
     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix = [
+    ...     [2, 4, 6],
+    ...     [8, 10, 12]
+    ... ]
+    >>> print(matrix_divided(matrix, 2))  
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
 
-==============
-Doc
-==============
-
-Checking Doc module
-    >>> tmp = __import__("2-matrix_divided").__doc__
-    >>> len(tmp) > 1
-    True
-
-Checking Doc module
-    >>> tmp = __import__("2-matrix_divided").__doc__
-    >>> len(tmp) > 1
-    True
-
-Checking div
-    >>> matrix = [[1,2,3,4,5],[6,7,8,9,10]]    
-    >>> matrix_divided(matrix, "Hellow world")
-    Traceback
-    ...
-    TypeError: div must be a number
