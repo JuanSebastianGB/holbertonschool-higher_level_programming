@@ -1,0 +1,91 @@
+# 3-say_my_name.txt
+
+========================================
+UNIT TEST FOR MODULE 3-say_my_name.py
+========================================
+
+In this module is implemented a function to print a name with the gived inputs ``say_my_name(first_name, last_name="")``
+
+=============
+HOW TO USE IT
+=============
+
+``say_my_name(...)`` Print the name with the gived input(s).
+
+# Importing the module with the function
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Checking normal output
+    >>> say_my_name("Juan Sebastian", "Gonzalez")
+    My name is Juan Sebastian Gonzalez
+
+# name can't be a number
+    >>> say_my_name(5, "Gonzalez")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+# Last name can't be a number
+    >>> say_my_name("Juan", 56)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name(56, 56)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+# Last name can be empty (a single space empty), then is goona be printing only name with the corresponding space
+    >>> say_my_name("Juancho ")
+    My name is Juancho  
+
+# Last name can be empty (a single space empty), then is goona be printing only name with the corresponding space
+    >>> say_my_name(56)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+===========================
+OTHER INCORRECT INPUT TYPES
+===========================
+
+# name can't be a list
+    >>> say_my_name([],[])
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name(["Name 1", "Name 2"],[])
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+# Last name can't be a list
+    >>> say_my_name("name",[])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+# name can't be a dict
+    >>> say_my_name({1: "name"},[])
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+# Last name can't be a list
+    >>> say_my_name("name",{1: "last name"})
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+    
+======================================
+WHAT IF IS NONE OR NOTHING OR TOO MUCH
+======================================
+
+# Can't receive a None
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+# Expecting atleast 1 element
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+# Too many arguments is not good neither
+    >>> say_my_name("Juan", "Sebastian", "Gonzalez")
+    Traceback (most recent call last):
+    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
