@@ -11,14 +11,19 @@ def matrix_divided(matrix, div):
         div ([int, float]): [denominator to aply]
 
     Raises:
-        TypeError: [if the matrix is not a list of lists or if rows does'n contain numbers ]
+        TypeError: [if the matrix is not a list of lists or if rows
+        does'n contain numbers ]
         TypeError: [Rows size Mismatch]
         ZeroDivisionError: [div is 0]
     """
 
-    if type(matrix) is not list or \
+    if type(matrix) is not list or len(matrix) == 0 or \
             not all([type(el) in [int, float]
                      for row in matrix for el in row]):
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats")
+
+    if any(list(map(lambda row: len(row) == 0, matrix))):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
 

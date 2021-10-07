@@ -12,7 +12,7 @@ HOW TO USE IT
 
 ``matrix_divided(...)`` Return matrix with the values divided by a gived input.
 
-# Checking all values with an exact expected like output, but getting .2 decimals 
+# Checking all values with an expected output, but getting .2 decimals 
     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
     >>> matrix = [
     ...     [2, 4, 6],
@@ -21,3 +21,74 @@ HOW TO USE IT
     >>> print(matrix_divided(matrix, 2))  
     [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
 
+# Checking with decimals and negative numbers
+    >>> matrix = [
+    ...     [1.1, 4, 6],
+    ...     [8, 10, -12]
+    ... ]
+    >>> print(matrix_divided(matrix, 3))  
+    [[0.37, 1.33, 2.0], [2.67, 3.33, -4.0]]
+
+===============
+Checking div
+=============== 
+
+Div like string
+
+# Checking with decimals and negative numbers
+    >>> matrix = [[1.1, 4, 6],[8, 10, -12]]
+    >>> print(matrix_divided(matrix, "3"))  
+    Traceback (most recent call last):
+    TypeError: div must be a number
+
+Div is 0
+# Checking with decimals and negative numbers
+    >>> matrix = [[1.1, 4, 6],[8, 10, -12]]
+    >>> print(matrix_divided(matrix, 0))  
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+===============
+Checking Matrix
+=============== 
+
+# Matrix must be a list
+    >>> matrix = None
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Matrix can't be an string
+    >>> print(matrix_divided("I am a matrix", 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Matrix must be a list with lists with numbers
+    >>> matrix = [[1.1, 4, []],[8, 10, "-12"]]
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Matrix can't be empty
+    >>> matrix = []
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# The lists iniside Matrix can't be empty neither
+    >>> matrix = [[]]
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# The list elements only can be numbers
+    >>> matrix = [[1, 2, 3], ["5", 1, -90]]
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Checking all the rows the same size
+    >>> matrix = [[1, 2, 3], [4, 5]]
+    >>> print(matrix_divided(matrix, 5))
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
