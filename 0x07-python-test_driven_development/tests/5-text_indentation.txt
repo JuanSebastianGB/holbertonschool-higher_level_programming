@@ -32,6 +32,19 @@ HOW TO USE IT
     word:
     <BLANKLINE>
 
+# blank space after if is not blank space down
+    >>> text_indentation("word.")
+    word.
+    <BLANKLINE>
+
+    >>> text_indentation("word?")
+    word?
+    <BLANKLINE>
+
+    >>> text_indentation("word:")
+    word:
+    <BLANKLINE>
+
 # Checking spaces at the start and at the end    
     >>> text_indentation("           Hellow          ")
     Hellow
@@ -53,10 +66,6 @@ HOW TO USE IT
 # Ending without those chars
     >>> text_indentation("This is the end")
     This is the end
-
-# Ending with those chars
-    >>> text_indentation("This is the end.")
-    This is the end.
 
 # What about \n?
     >>> text_indentation("Hellow \n world? this")
