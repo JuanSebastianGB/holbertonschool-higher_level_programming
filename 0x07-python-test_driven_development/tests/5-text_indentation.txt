@@ -1,0 +1,100 @@
+# 5-text_indentation.txt
+
+==========================================
+UNIT TEST FOR MODULE 5-text_indentation.py
+==========================================
+
+In this module is implemented a function to print a processed text, replacing ?, . and : by \n\n ``text_indentation(text)``
+
+=============
+HOW TO USE IT
+=============
+
+``text_indentation(...)`` Print the processed text.
+
+# Importing the module with the function
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Nothing special
+    >>> text_indentation("word")
+    word
+
+# blank space after is blank space down
+    >>> text_indentation("word. ")
+    word.
+    <BLANKLINE>
+
+    >>> text_indentation("word? ")
+    word?
+    <BLANKLINE>
+
+    >>> text_indentation("word: ")
+    word:
+    <BLANKLINE>
+
+# Checking spaces at the start and at the end    
+    >>> text_indentation("           Hellow          ")
+    Hellow
+
+# Checking spaces at the start and at the end and combining with a char   
+    >>> text_indentation("           Hellow    world.  123      ")
+    Hellow    world.
+    <BLANKLINE>
+    123
+
+# Using couple times
+    >>> text_indentation("word number 1: hellow, and number 2: world")
+    word number 1:
+    <BLANKLINE>
+    hellow, and number 2:
+    <BLANKLINE>
+    world
+
+# Ending without those chars
+    >>> text_indentation("This is the end")
+    This is the end
+
+# Ending with those chars
+    >>> text_indentation("This is the end.")
+    This is the end.
+
+# What about \n?
+    >>> text_indentation("Hellow \n world? this")
+    Hellow
+    world?
+    <BLANKLINE>
+    this
+
+==================
+INVALID INPUTS
+==================
+
+# Integer
+    >>> text_indentation(1)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# float
+    >>> text_indentation(100.59)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# list
+    >>> text_indentation([])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# Dictionary
+    >>> text_indentation({1: "something"})
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# A valid elment must be delibered
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+# Expected 1 argument
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
