@@ -5,5 +5,7 @@ matrix = [
     [1.1, 4, 6],
     [8, 10, -12]
 ]
+matrix_divided()
+print(matrix_divided([1, 5, 6], 5))
 print(matrix_divided([[1], [5, 6]], 5))
 print(matrix)

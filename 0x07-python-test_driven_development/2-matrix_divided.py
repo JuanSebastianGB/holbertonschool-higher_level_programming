@@ -17,9 +17,12 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: [div is 0]
     """
 
-    if type(matrix) is not list or len(matrix) == 0 or \
-            not all([type(el) in [int, float]
-                     for row in matrix for el in row]):
+    if type(matrix) is not list or len(matrix) == 0 \
+            or not all([type(row) == list for row in matrix]):
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats")
+
+    if not all([type(el) in [int, float] for row in matrix for el in row]):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
 
