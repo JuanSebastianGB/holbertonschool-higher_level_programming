@@ -54,3 +54,8 @@ MISSING ARGUMENTS
     Traceback (most recent call last):
     ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
 
+# Testing normal outup
+
+    >>> lazy_matrix_mul([[10, -2], [30, 4.5]], [[15, 20], [3.5, 45]])
+    array([[143.  , 110.  ],
+           [465.75, 802.5 ]])
