@@ -134,3 +134,11 @@ Checking Matrix
     >>> matrix_divided()
     Traceback (most recent call last):
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+# inf values in div
+    >>> matrix_divided([[1, 2], [5, 6]], float('inf'))
+    [[0.0, 0.0], [0.0, 0.0]]
+
+# inf values in matrix
+    >>> matrix_divided([[1, 2, float('inf')], [1, 2, 3]], 5)
+    [[0.2, 0.4, inf], [0.2, 0.4, 0.6]]

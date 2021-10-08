@@ -17,8 +17,6 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: [div is 0]
     """
 
-    if div == float('inf') or div == -float('inf') or div != div:
-        div = 10
     if type(matrix) is not list or len(matrix) == 0 \
             or not all([type(row) == list for row in matrix]):
         raise TypeError(
