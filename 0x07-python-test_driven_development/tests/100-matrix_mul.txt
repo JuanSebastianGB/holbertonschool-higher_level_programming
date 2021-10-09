@@ -1,0 +1,20 @@
+# 100-matrix_mul.txt
+
+===========================================
+UNIT TEST FOR MODULE 100-matrix_mul.py
+===========================================
+
+In this module is implemented a function to implement mul between matrix ``matrix_mul(m_a, m_b)``
+
+=============
+HOW TO USE IT
+=============
+
+``matrix_mul(...)`` Return matrix multiplicated.
+
+# Importing the module with the function
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+# Implementing normal test    
+    >>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+    [[7, 10], [15, 22]]
