@@ -116,3 +116,19 @@ They are not lists
     >>> print(lazy_matrix_mul([[1, 2], [1]], "55"))
     Traceback (most recent call last):
     ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+====================
+Dimmentions mismatch
+====================
+
+# m_a has rows in different sizes
+
+    >>> print(lazy_matrix_mul([[1,2],[1, 5, 8]],[[1,2], [3,4]]))
+    [list([1, 2, 1, 5, 8, 1, 5, 8, 1, 5, 8])
+     list([1, 2, 1, 2, 1, 5, 8, 1, 5, 8, 1, 5, 8, 1, 5, 8])]
+
+# m_b has rows in different sizes
+
+    >>> print(lazy_matrix_mul([[1, 2], [1, 5]], [[1, 2], [3, 4, 8]]))
+    [list([1, 2, 3, 4, 8, 3, 4, 8])
+     list([1, 2, 3, 4, 8, 3, 4, 8, 3, 4, 8, 3, 4, 8, 3, 4, 8])]
