@@ -15,9 +15,14 @@ HOW TO USE IT
 # Importing the module with the function
     >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
-==============
+# Implementing normal test    
+    >>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+    [[ 7 10]
+     [15 22]]
+
+=================
 # No matrix cases
-==============
+=================
     
 # Missing m_b
     >>> print(lazy_matrix_mul([[1, 2], [3, 4]]))
@@ -29,29 +34,28 @@ HOW TO USE IT
     Traceback (most recent call last):
     TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 
-================
+==================
 Empty matrix cases
-================
+==================
 
 # m_a can't be Empty
     >>> print(lazy_matrix_mul([],[[1, 2], [3, 4]]))
     Traceback (most recent call last):
-    ValueError: m_a can't be empty
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 0)
 
 # m_a rows can't be Empty
     >>> print(lazy_matrix_mul([[]],[[1, 2], [3, 4]]))
     Traceback (most recent call last):
-    ValueError: m_a can't be empty
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 0)
 
 # m_b can't be Empty
     >>> print(lazy_matrix_mul([[1, 2], [3, 4]], []))
     Traceback (most recent call last):
-    ValueError: m_b can't be empty
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 0 is different from 2)
 
 # if both are empty
     >>> print(lazy_matrix_mul([], []))
-    Traceback (most recent call last):
-    ValueError: m_a can't be empty
+    0.0
 
 ==============
 Wrong size
@@ -60,12 +64,13 @@ Wrong size
 # m_a and m_b can't be multuply if num rows of a mismatch with num cols with be
     >>> print(lazy_matrix_mul([[], [], []], [[1, 2]]))
     Traceback (most recent call last):
-    ValueError: m_a and m_b can't be multiplied
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
 
 # m_a and m_b can't be multuply if num rows of a mismatch with num cols with be
     >>> print(lazy_matrix_mul([[1, 2]], [[], [], []]))
     Traceback (most recent call last):
-    ValueError: m_a and m_b can't be multiplied
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 2)
+
 
 =============
 Wrong Types
@@ -74,12 +79,12 @@ Wrong Types
 # m_a wrong Type
     >>> print(lazy_matrix_mul([[1, "2"]], [[1],[2]]))
     Traceback (most recent call last):
-    TypeError: m_a should contain only integers or floats
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U21'), dtype('int64')) -> None
 
 # m_b wrong Type
     >>> print(lazy_matrix_mul([[1, 2]], [["1"],[2]]))
     Traceback (most recent call last):
-    TypeError: m_b should contain only integers or floats
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U21')) -> None
 
 ==============
 Wrong size
@@ -87,13 +92,11 @@ Wrong size
 
 # Wrong size of m_a
     >>> print(lazy_matrix_mul([[1, 2], [1]], [[1, 2],[2, 2]]))
-    Traceback (most recent call last):
-    TypeError: each row of m_a must be of the same size
+    [list([1, 2, 1, 1]) list([1, 2, 1, 2, 1, 1])]
 
 # Wrong size of m_b
     >>> print(lazy_matrix_mul([[1, 2]], [[1, 2],[2]]))
-    Traceback (most recent call last):
-    TypeError: each row of m_b must be of the same size
+    [list([1, 2, 2, 2])]
 
 ==================
 They are not lists
@@ -102,5 +105,4 @@ They are not lists
 # m_b is not a list
     >>> print(lazy_matrix_mul([[1, 2], [1]], "55"))
     Traceback (most recent call last):
-    TypeError: m_b must be a list
-
+    ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
