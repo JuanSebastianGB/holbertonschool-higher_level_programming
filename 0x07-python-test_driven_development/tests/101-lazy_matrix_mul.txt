@@ -59,3 +59,10 @@ MISSING ARGUMENTS
     >>> lazy_matrix_mul([[10, -2], [30, 4.5]], [[15, 20], [3.5, 45]])
     array([[143.  , 110.  ],
            [465.75, 802.5 ]])
+
+# Testing dimention mismatch
+
+    >>> print(lazy_matrix_mul([[1, 2, 5], [3, 4, 5]], [[1, 2], [3, 4]]))
+    Traceback (most recent call last):
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 3)
+
