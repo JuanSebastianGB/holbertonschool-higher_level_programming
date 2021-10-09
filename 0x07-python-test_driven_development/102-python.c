@@ -8,7 +8,7 @@
 
 void print_python_string(PyObject *p)
 {
-	Py_ssize_t length;
+	long int length;
 
 	printf("[.] string object info\n");
 /* Checking invalid string*/
