@@ -2,14 +2,14 @@
 """Defining multiplication between matrix"""
 
 
-from typing import Type
-
-
 def is_rectangle(matrix):
+    """[check if all rows of the matrix are of the same size]
+    """
     return not any([len(row) != len(matrix[0]) for row in matrix])
 
 
 def matrix_mul(m_a, m_b):
+    """ Implementing mul operation between 2 matrix """
 
     if type(m_a) is not list:
         raise TypeError("m_a must be a list")
