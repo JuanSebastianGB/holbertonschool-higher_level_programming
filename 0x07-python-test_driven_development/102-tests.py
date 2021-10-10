@@ -5,6 +5,8 @@ lib = ctypes.CDLL('./libPython.so')
 lib.print_python_string.argtypes = [ctypes.py_object]
 s = "The spoon does not exist"
 lib.print_python_string(s)
+s = "There is no spoon"
+lib.print_python_string(s)
 s = "ложка не существует"
 lib.print_python_string(s)
 s = "La cuillère n'existe pas"
