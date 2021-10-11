@@ -3,7 +3,7 @@
 
 
 class MyList(list):
-    """ Defining a subclasss of list"""
+    """ Defining a subclass of list"""
 
     def __init__(self):
         """ Starting object """
