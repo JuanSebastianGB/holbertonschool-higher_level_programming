@@ -26,12 +26,12 @@ IMPORT
 # integer is 0
     >>> ob.integer_validator("integer", 0)
     Traceback (most recent call last):
-    ValueError: <name> must be greater than 0
+    ValueError: integer must be greater than 0
 
 # integer is < 0
     >>> ob.integer_validator("integer", -1)
     Traceback (most recent call last):
-    ValueError: <name> must be greater than 0
+    ValueError: integer must be greater than 0
 
 # integer positive    
     >>> ob.integer_validator("integer", 1)
@@ -39,12 +39,17 @@ IMPORT
 # Not integer
     >>> ob.integer_validator("bool", True)
     Traceback (most recent call last):
-    TypeError: <name> must be an integer
+    TypeError: bool must be an integer
 
 # Not arguments
     >>> ob.integer_validator()
     Traceback (most recent call last):
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+# None argument
+    >>> ob.integer_validator(None)
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 # 3 arguments
     >>> ob.integer_validator("integer", 10, 5)
