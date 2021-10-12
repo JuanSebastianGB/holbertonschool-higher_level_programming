@@ -12,11 +12,25 @@ IMPORT
 
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+# Giving arguments to the class
+    >>> ob = BaseGeometry(None)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry() takes no arguments
+
+
 # Checking for area failure
     >>> ob = BaseGeometry()
     >>> ob.area()
     Traceback (most recent call last):
     Exception: area() is not implemented
+
+# Printing ob
+    >>> print(ob) # doctest: +ELLIPSIS
+    <7-base_geometry.BaseGeometry object at ...>
+
+# Printing ob type
+    >>> print(type(ob))
+    <class '7-base_geometry.BaseGeometry'>
 
 # Checking a lot arguments
     >>> ob.area(20)
@@ -36,10 +50,30 @@ IMPORT
 # integer positive    
     >>> ob.integer_validator("integer", 1)
 
-# Not integer
+# Not integer boolean
     >>> ob.integer_validator("bool", True)
     Traceback (most recent call last):
     TypeError: bool must be an integer
+
+# Not integer tuple
+    >>> ob.integer_validator("tuple", (1, 5))
+    Traceback (most recent call last):
+    TypeError: tuple must be an integer
+
+# Not integer list
+    >>> ob.integer_validator("list", [30])
+    Traceback (most recent call last):
+    TypeError: list must be an integer
+
+# Not integer dictionary
+    >>> ob.integer_validator("dictionary", {3, 5})
+    Traceback (most recent call last):
+    TypeError: dictionary must be an integer
+
+# Not integer None
+    >>> ob.integer_validator("None", None)
+    Traceback (most recent call last):
+    TypeError: None must be an integer
 
 # Not arguments
     >>> ob.integer_validator()
