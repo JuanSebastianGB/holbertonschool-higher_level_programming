@@ -79,6 +79,16 @@ IMPORT
     Traceback (most recent call last):
     TypeError: None must be an integer
 
+# Not integer String
+    >>> ob.integer_validator("String", "String")
+    Traceback (most recent call last):
+    TypeError: String must be an integer
+
+# Not integer Float
+    >>> ob.integer_validator("Float", 58.5)
+    Traceback (most recent call last):
+    TypeError: Float must be an integer
+
 # Not arguments
     >>> ob.integer_validator()
     Traceback (most recent call last):
