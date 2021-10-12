@@ -32,6 +32,10 @@ IMPORT
     >>> print(type(ob))
     <class '7-base_geometry.BaseGeometry'>
 
+# Printing ob.area
+    >>> print(ob.area) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+    <bound method BaseGeometry.area of <7-base_geometry.BaseGeometry object at ...>>
+
 # Checking a lot arguments
     >>> ob.area(20)
     Traceback (most recent call last):
@@ -84,6 +88,11 @@ IMPORT
     >>> ob.integer_validator(None)
     Traceback (most recent call last):
     TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+# unexepected argument    
+    >>> ob.integer_validator({"weird": "5"}, [5]) 
+    Traceback (most recent call last):
+    TypeError: {'weird': '5'} must be an integer
 
 # 3 arguments
     >>> ob.integer_validator("integer", 10, 5)
