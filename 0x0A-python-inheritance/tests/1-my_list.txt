@@ -1,0 +1,63 @@
+# 1-my_list.txt
+
+========================================
+UNIT TEST FOR MODULE 1-my_list.py
+========================================
+
+In this module is implemented a class 'MyList' inherited from list
+
+======
+IMPORT
+======
+
+    >>> MyList = __import__('1-my_list').MyList
+
+# Print without filling
+    >>> ob = MyList()
+    >>> print(ob)
+    []
+
+# Checking type
+    >>> ob = MyList()
+    >>> print(type(ob))
+    <class '1-my_list.MyList'>
+    
+# Checking list like input
+
+    >>> ob = MyList([1,2,3])
+    Traceback (most recent call last):
+    TypeError: __init__() takes 1 positional argument but 2 were given
+
+# Checking list like 2 inputs
+
+    >>> ob = MyList([1,2,3],[1,2,3])
+    Traceback (most recent call last):
+    TypeError: __init__() takes 1 positional argument but 3 were given
+
+# Checking none input
+    >>> ob = MyList(None)
+    Traceback (most recent call last):
+    TypeError: __init__() takes 1 positional argument but 2 were given
+
+# Implementing append
+
+    >>> ob = MyList()
+    >>> ob.append(1)
+    >>> ob.append(2)
+    >>> print(ob)
+    [1, 2]
+
+# Checking inherits
+
+    >>> issubclass(MyList, list)
+    True
+
+# Checking sorted
+
+    >>> ob.print_sorted()
+    [1, 2]
+
+# too many arguments to print sorted
+    >>  ob.print_sorted(5)
+    Traceback (most recent call last):
+    TypeError: print_sorted() takes 1 positional argument but 2 were given
