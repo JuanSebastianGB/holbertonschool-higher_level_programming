@@ -10,7 +10,7 @@ filename = "my_dict.json"
 my_dict = load_from_json_file(filename)
 print(my_dict)
 print(type(my_dict))
-"""
+
 try:
     filename = "my_set_doesnt_exist.json"
     my_set = load_from_json_file(filename)
@@ -26,4 +26,3 @@ try:
     print(type(my_fake))
 except Exception as e:
     print("[{}] {}".format(e.__class__.__name__, e))
-"""
