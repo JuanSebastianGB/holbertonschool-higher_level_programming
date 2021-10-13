@@ -5,7 +5,7 @@
 
 def pascal_triangle(n):
     """ Function that generates the pascal triangle"""
-    if n < 0:
+    if n <= 0:
         return []
 
     matrix = [[1]]
