@@ -17,7 +17,7 @@ def append_after(filename="", search_string="", new_string=""):
     with open(filename, mode="r") as f:
         for line in f:
             new_content += line
-            if search_string not in line:
+            if search_string in line:
                 new_content += new_string
     # overrinding mode
     with open(filename, mode="w", encoding="utf-8") as s:
