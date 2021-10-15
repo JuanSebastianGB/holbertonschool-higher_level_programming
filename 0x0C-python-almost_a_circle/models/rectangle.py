@@ -72,9 +72,15 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Computing Area of rectangle"""
+        """returns the area value of the Rectangle instance."""
         return self.height * self.width
 
     def display(self):
-        """Print a matrix of chasrs #"""
-        print(("#" * self.width + '\n') * self.height, end="")
+        """prints in stdout the Rectangle instance with the character # and offset x,y"""
+        print("\n" * self.y, end="")
+        print(((" " * self.x) + "#" * self.width + '\n') * self.height, end="")
+
+    def __str__(self):
+        """overriding the __str__ method so that it returns 
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
