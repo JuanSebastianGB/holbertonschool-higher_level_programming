@@ -72,12 +72,9 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Area of the rectangle
-
-        Returns:
-            [int]: [Area calculated]
-        """
+        """Computing Area of rectangle"""
         return self.height * self.width
 
     def display(self):
+        """Print a matrix of chasrs #"""
         print(("#" * self.width + '\n') * self.height, end="")
