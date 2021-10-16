@@ -86,7 +86,7 @@ class Rectangle(Base):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """Update bu assigning an argument to each attribute"""
+        """Update by assigning an argument to each attribute"""
         if len(args) > 0:
             for index, value in enumerate(args):
                 if index == 0:
