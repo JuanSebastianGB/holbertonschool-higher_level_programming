@@ -85,16 +85,28 @@ class Rectangle(Base):
         [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update bu assigning an argument to each attribute"""
-        for index, value in enumerate(args):
-            if index == 0:
-                self.id = value
-            if index == 1:
-                self.width = value
-            if index == 2:
-                self.height = value
-            if index == 3:
-                self.x = value
-            if index == 4:
-                self.y = value
+        if len(args) > 0:
+            for index, value in enumerate(args):
+                if index == 0:
+                    self.id = value
+                if index == 1:
+                    self.width = value
+                if index == 2:
+                    self.height = value
+                if index == 3:
+                    self.x = value
+                if index == 4:
+                    self.y = value
+        else:  # Skipping kwargs if isset args
+            if "id" in kwargs:
+                self.id = kwargs["id"]
+            if "width" in kwargs:
+                self.width = kwargs["width"]
+            if "height" in kwargs:
+                self.height = kwargs["height"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
