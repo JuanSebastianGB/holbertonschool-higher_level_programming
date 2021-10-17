@@ -83,3 +83,21 @@ class Base:
             elif cls.__name__ == "Square":
                 [csv_obj.writerow([obj.id, obj.size,
                                   obj.x, obj.y]) for obj in list_objs]
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes in csv"""
+        file_name = "{}.csv".format(cls.__name__)
+        try:
+            with open(file_name, mode="r", encoding="utf-8", newline="") as csv_f:
+                csv_obj = csv.reader(csv_f)
+                if cls.__name__ == "Rectangle":
+                    destiny = ['id', 'width', 'height', 'x', 'y']
+                    return [(cls.create(**{destiny[index]: int(el) for index,
+                                        el in enumerate(row)})) for row in csv_obj]
+                elif cls.__name__ == "Square":
+                    destiny = ['id', 'size', 'x', 'y']
+                    return [(cls.create(**{destiny[index]: int(el) for index,
+                                        el in enumerate(row)})) for row in csv_obj]
+        except IOError:
+            return []
