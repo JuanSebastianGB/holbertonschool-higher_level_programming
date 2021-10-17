@@ -48,3 +48,13 @@ class Base:
         file_name = "{}.json".format(cls.__name__)
         with open(file_name, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(dicts))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 2)
+        else:
+            dummy = cls(5)
+        dummy.update(**dictionary)
+        return dummy
