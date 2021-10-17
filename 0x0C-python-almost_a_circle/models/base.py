@@ -50,6 +50,17 @@ class Base:
             f.write(cls.to_json_string(dicts))
 
     @classmethod
+    def load_from_file(cls):
+        """returns a list of instances from a file with json string representation"""
+        file_name = "{}.json".format(cls.__name__)
+        try:
+            with open(file_name, mode="r", encoding="utf-8") as f:
+                f = cls.from_json_string(f.read())
+            return [cls.create(**el) for el in f]
+        except IOError:
+            return []
+
+    @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
         if cls.__name__ == "Rectangle":
