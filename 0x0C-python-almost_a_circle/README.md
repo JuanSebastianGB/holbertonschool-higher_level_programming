@@ -1079,4 +1079,125 @@ guillaume@ubuntu:~/$
 -   Directory:  `0x0C-python-almost_a_circle`
 -   File:  `models/base.py`
 
+### 20. JSON ok, but CSV?
+
+
+Update the class  `Base`  by adding the class methods  `def save_to_file_csv(cls, list_objs):`  and  `def load_from_file_csv(cls):`  that serializes and deserializes in CSV:
+
+-   The filename must be:  `<Class name>.csv`  - example:  `Rectangle.csv`
+-   Has the same behavior as the JSON serialization/deserialization
+-   Format of the CSV:
+    -   Rectangle:  `<id>,<width>,<height>,<x>,<y>`
+    -   Square:  `<id>,<size>,<x>,<y>`
+
+```
+guillaume@ubuntu:~/$ cat 100-main.py
+#!/usr/bin/python3
+""" 100-main """
+from models.rectangle import Rectangle
+from models.square import Square
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 7, 2, 8)
+    r2 = Rectangle(2, 4)
+    list_rectangles_input = [r1, r2]
+
+    Rectangle.save_to_file_csv(list_rectangles_input)
+
+    list_rectangles_output = Rectangle.load_from_file_csv()
+
+    for rect in list_rectangles_input:
+        print("[{}] {}".format(id(rect), rect))
+
+    print("---")
+
+    for rect in list_rectangles_output:
+        print("[{}] {}".format(id(rect), rect))
+
+    print("---")
+    print("---")
+
+    s1 = Square(5)
+    s2 = Square(7, 9, 1)
+    list_squares_input = [s1, s2]
+
+    Square.save_to_file_csv(list_squares_input)
+
+    list_squares_output = Square.load_from_file_csv()
+
+    for square in list_squares_input:
+        print("[{}] {}".format(id(square), square))
+
+    print("---")
+
+    for square in list_squares_output:
+        print("[{}] {}".format(id(square), square))
+
+guillaume@ubuntu:~/$ ./100-main.py
+[140268695797600] [Rectangle] (1) 2/8 - 10/7
+[140268695797656] [Rectangle] (2) 0/0 - 2/4
+---
+[140268695529008] [Rectangle] (1) 2/8 - 10/7
+[140268695528952] [Rectangle] (2) 0/0 - 2/4
+---
+---
+[140268695822520] [Square] (5) 0/0 - 5
+[140268695826328] [Square] (6) 9/1 - 7
+---
+[140268695529232] [Square] (5) 0/0 - 5
+[140268695529176] [Square] (6) 9/1 - 7
+guillaume@ubuntu:~/$ 
+
+```
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-higher_level_programming`
+-   Directory:  `0x0C-python-almost_a_circle`
+-   File:  `models/`
+
+### 21. Let's draw it
+
+Update the class  `Base`  by adding the static method  `def draw(list_rectangles, list_squares):`  that opens a window and draws all the  `Rectangles`  and  `Squares`:
+
+-   You must use the  [Turtle graphics module](https://intranet.hbtn.io/rltoken/AuDu9jy9zmIN12YpQaHm0A "Turtle graphics module")
+-   To install it:  `sudo apt-get install python3-tk`
+-   To make the GUI available outside your vagrant machine, add this line in your Vagrantfile:  `config.ssh.forward_x11 = true`
+-   No constraints for color, shape etc… be creative!
+
+```
+guillaume@ubuntu:~/$ cat 101-main.py
+#!/usr/bin/python3
+""" 101-main """
+from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
+
+if __name__ == "__main__":
+
+    list_rectangles = [Rectangle(100, 40), Rectangle(90, 110, 30, 10), Rectangle(20, 25, 110, 80)]
+    list_squares = [Square(35), Square(15, 70, 50), Square(80, 30, 70)]
+
+    Base.draw(list_rectangles, list_squares)
+
+guillaume@ubuntu:~/$ ./101-main.py
+....
+
+```
+
+-   Uncommented line in  `/etc/ssh/ssh_config`  that said  `# ForwardX11 no`  and change  `no`  to  `yes`.
+-   Then added line  `config.ssh.forward_agent = true`  to my Vagrantfile in addition to  `config.ssh.forward_x11 = true`.
+-   Halted my vm with  `vagrant halt`  and started it back up with  `vagrant up --provision`  then  `vagrant ssh`.
+-   If you get an error that looks like  `/usr/bin/xauth: timeout in locking authority file /home/vagrant/.Xauthority`, then enter  `rm .Xauthority`  (you may have to  `sudo`).
+-   Logout and restart the vm with  `vagrant up --provision`.
+-   Test with  `xeyes`. If Xquartz is installed on the Mac OS it should open in an Xquartz window.
+
+**Repo:**
+
+-   GitHub repository:  `holbertonschool-higher_level_programming`
+-   Directory:  `0x0C-python-almost_a_circle`
+-   File:  `models/base.py`
+
+
 Copyright © 2021 Holberton Inc, All rights reserved.

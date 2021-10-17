@@ -101,3 +101,7 @@ class Base:
                                         el in enumerate(row)})) for row in csv_obj]
         except IOError:
             return []
+
+    def draw(list_rectangles, list_squares):
+        """opens a window and draws all the Rectangles and Squares"""
+        pass
