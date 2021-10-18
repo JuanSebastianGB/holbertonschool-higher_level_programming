@@ -211,26 +211,32 @@ class Test_rectangle(unittest.TestCase):
             self.rectangle1.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle1.width + "\n")
+            catched, "\n" * self.rectangle1.y +
+            (" " * self.rectangle1.x + "#" * self.rectangle1.width + "\n")
             * self.rectangle1.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
-            self.rectangle1.display()
+            self.rectangle2.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle2.width + "\n")
+            catched, "\n" * self.rectangle2.y +
+            (" " * self.rectangle2.x + "#" * self.rectangle2.width + "\n")
             * self.rectangle2.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
-            self.rectangle1.display()
+            self.rectangle3.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle3.width + "\n")
-            * self.rectangle3.height)
+            catched, "\n" * self.rectangle3.y +
+            (" " * self.rectangle3.x + "#" * self.rectangle3.width + "\n")
+            * self.rectangle2.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
-            self.rectangle1.display()
+            self.rectangle4.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle4.width + "\n")
+            catched, "\n" * self.rectangle4.y +
+            (" " * self.rectangle4.x + "#" * self.rectangle4.width + "\n")
             * self.rectangle4.height)
+
+
 
     def test_display_arguments(self):
         """[Testing when too many arguments are gived to display function]
