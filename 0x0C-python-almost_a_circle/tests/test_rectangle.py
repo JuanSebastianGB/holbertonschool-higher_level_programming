@@ -3,6 +3,7 @@
     """
 import unittest
 from models.rectangle import Rectangle
+from models.base import Base
 
 # Running test by python3 -m unittest discover tests -v
 
@@ -12,6 +13,7 @@ class Test_rectangle(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """ Setting instances of Rectangles once"""
+        Base.__nb_objects = 0
         cls.rectangle1 = Rectangle(4, 15)
         cls.rectangle2 = Rectangle(4, 15, 5)
         cls.rectangle3 = Rectangle(4, 15, 5, 7)
@@ -48,3 +50,11 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(self.rectangle2.y, 0)
         self.assertEqual(self.rectangle3.y, 7)
         self.assertEqual(self.rectangle4.y, 7)
+
+    def test_id(self):
+        """[Testing that the id assignation is right, considering Base]
+        """
+        self.assertEqual(self.rectangle1.id, 1)
+        self.assertEqual(self.rectangle2.id, 2)
+        self.assertEqual(self.rectangle3.id, 3)
+        self.assertEqual(self.rectangle4.id, 30)
