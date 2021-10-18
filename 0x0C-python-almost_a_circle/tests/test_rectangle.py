@@ -316,3 +316,57 @@ class Test_rectangle(unittest.TestCase):
         rectangle = Rectangle(5, 8, 15, 25, 1)
         rectangle.update()
         self.assertEqual(str(rectangle), "[Rectangle] (1) 15/25 - 5/8")
+
+    def test_wrong_types_updating(self):
+        """[Testing that types when updating are right]
+        """
+        rectangle = Rectangle(100, 2, 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, "2", 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, 2.5, 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, [], 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, {}, 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, (1,), 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(100, {"1": "hellow"}, 2, 2, 2)
+        rectangle = Rectangle(100, 2, 2, 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, "2", 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, 2.5, 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, [], 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, {}, 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, (1,), 2, 2)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(100, 2, {"1": "hellow"}, 2, 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, "2", 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, 2.5, 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, [], 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, {}, 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, (1,), 2)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(100, 2, 2, {"1": "hellow"}, 2)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, "2")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, 2.5)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, [])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, {})
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, (1,))
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(100, 2, 2, 2, {"1": "hellow"})
