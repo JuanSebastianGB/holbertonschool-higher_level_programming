@@ -231,3 +231,15 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(
             catched, ("#" * self.rectangle4.width + "\n")
             * self.rectangle4.height)
+
+    def test_area_arguments(self):
+        """[Testing when too many arguments are gived to display function]
+        """
+        with self.assertRaises(TypeError):
+            self.rectangle1.display(5, 4, 3, 2)
+        with self.assertRaises(TypeError):
+            self.rectangle2.display(5, 4, 3)
+        with self.assertRaises(TypeError):
+            self.rectangle3.display(5, 4)
+        with self.assertRaises(TypeError):
+            self.rectangle4.display(5)
