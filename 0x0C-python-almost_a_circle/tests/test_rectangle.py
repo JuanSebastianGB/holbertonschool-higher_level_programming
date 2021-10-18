@@ -232,7 +232,7 @@ class Test_rectangle(unittest.TestCase):
             catched, ("#" * self.rectangle4.width + "\n")
             * self.rectangle4.height)
 
-    def test_area_arguments(self):
+    def test_display_arguments(self):
         """[Testing when too many arguments are gived to display function]
         """
         with self.assertRaises(TypeError):
