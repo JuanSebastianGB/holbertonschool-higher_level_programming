@@ -181,3 +181,11 @@ class Test_rectangle(unittest.TestCase):
         """
         with self.assertRaisesRegex(ValueError, "y must be >= 0") as _:
             Rectangle(1, 2, 3, -4, 5)
+
+    def test_area_value(self):
+        """[Testing the result of method area of gived rectangles]
+        """
+        self.assertEqual(self.rectangle1.area(), 4*15)
+        self.assertEqual(self.rectangle2.area(), 4*15)
+        self.assertEqual(self.rectangle3.area(), 4*15)
+        self.assertEqual(self.rectangle4.area(), 4*15)
