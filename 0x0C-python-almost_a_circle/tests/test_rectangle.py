@@ -58,3 +58,15 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(self.rectangle2.id, 2)
         self.assertEqual(self.rectangle3.id, 3)
         self.assertEqual(self.rectangle4.id, 30)
+
+    def test_empty_width(self):
+        """[Testing Raise type error when width is not setting]
+        """
+        with self.assertRaises(TypeError) as _:
+            Rectangle()
+
+    def test_empty_height(self):
+        """[Testing Raise type error when height is not setting]
+        """
+        with self.assertRaises(TypeError) as _:
+            Rectangle(1)
