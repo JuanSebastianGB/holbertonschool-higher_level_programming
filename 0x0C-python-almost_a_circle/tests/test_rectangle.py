@@ -3,6 +3,7 @@
     - Test setting form line ...
     - Test Types from line ...
     """
+from logging import raiseExceptions
 from typing import Type
 import unittest
 from models.rectangle import Rectangle
@@ -189,3 +190,9 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(self.rectangle2.area(), 4*15)
         self.assertEqual(self.rectangle3.area(), 4*15)
         self.assertEqual(self.rectangle4.area(), 4*15)
+
+    def test_area_arguments(self):
+        """[Testing when tomany arguments are gived to area function]
+        """
+        with self.assertRaises(TypeError) as _:
+            Rectangle(1, 2, 3, 4).area(5, 2, 3)
