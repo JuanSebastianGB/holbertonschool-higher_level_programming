@@ -236,8 +236,6 @@ class Test_rectangle(unittest.TestCase):
             (" " * self.rectangle4.x + "#" * self.rectangle4.width + "\n")
             * self.rectangle4.height)
 
-
-
     def test_display_arguments(self):
         """[Testing when too many arguments are gived to display function]
         """
@@ -281,3 +279,18 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(str(self.rectangle2), "[Rectangle] (2) 5/0 - 4/15")
         self.assertEqual(str(self.rectangle3), "[Rectangle] (3) 5/7 - 4/15")
         self.assertEqual(str(self.rectangle4), "[Rectangle] (30) 5/7 - 4/15")
+
+    def test_update_by_args(self):
+        """[Testing update rectangle by args]
+        """
+        rectangle = Rectangle(10, 20)
+        rectangle.update(10)
+        self.assertEqual(str(rectangle), "[Rectangle] (10) 0/0 - 10/20")
+        rectangle.update(10, 20)
+        self.assertEqual(str(rectangle), "[Rectangle] (10) 0/0 - 20/20")
+        rectangle.update(10, 20, 30)
+        self.assertEqual(str(rectangle), "[Rectangle] (10) 0/0 - 20/30")
+        rectangle.update(10, 20, 30, 40)
+        self.assertEqual(str(rectangle), "[Rectangle] (10) 40/0 - 20/30")
+        rectangle.update(10, 20, 30, 40, 50)
+        self.assertEqual(str(rectangle), "[Rectangle] (10) 40/50 - 20/30")
