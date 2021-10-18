@@ -243,3 +243,27 @@ class Test_rectangle(unittest.TestCase):
             self.rectangle3.display(5, 4)
         with self.assertRaises(TypeError):
             self.rectangle4.display(5)
+
+    def test_print_right_output(self):
+        """[Testing case __str__ output of the rectangle]
+        """
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            print(self.rectangle1)
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, f"[Rectangle] ({1:d}) {0:d}/{0:d} - {4:d}/{15:d}\n")
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            print(self.rectangle2)
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, f"[Rectangle] ({2:d}) {5:d}/{0:d} - {4:d}/{15:d}\n")
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            print(self.rectangle3)
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, f"[Rectangle] ({3:d}) {5:d}/{7:d} - {4:d}/{15:d}\n")
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            print(self.rectangle4)
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, f"[Rectangle] ({30:d}) {5:d}/{7:d} - {4:d}/{15:d}\n")
