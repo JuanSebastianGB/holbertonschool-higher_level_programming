@@ -8,6 +8,8 @@ from typing import Type
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+import contextlib
+import io
 
 # Running test by python3 -m unittest discover tests -v
 
@@ -192,7 +194,36 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(self.rectangle4.area(), 4*15)
 
     def test_area_arguments(self):
-        """[Testing when tomany arguments are gived to area function]
+        """[Testing when too many arguments are gived to area function]
         """
         with self.assertRaises(TypeError) as _:
             Rectangle(1, 2, 3, 4).area(5, 2, 3)
+        with self.assertRaises(TypeError) as _:
+            Rectangle(1, 2, 3, 4).area(5, 2)
+        with self.assertRaises(TypeError) as _:
+            Rectangle(1, 2, 3, 4).area(5)
+
+    def test_display_output(self):
+        """[Testing the displaying output of the function display, by catching
+        into a variable using 'with' with io and contextlib modules]
+        """
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            self.rectangle1.display()
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, ("#" * self.rectangle1.width + "\n") * self.rectangle1.height)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            self.rectangle1.display()
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, ("#" * self.rectangle2.width + "\n") * self.rectangle2.height)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            self.rectangle1.display()
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, ("#" * self.rectangle3.width + "\n") * self.rectangle3.height)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            self.rectangle1.display()
+            catched = output.getvalue()
+        self.assertEqual(
+            catched, ("#" * self.rectangle4.width + "\n") * self.rectangle4.height)
