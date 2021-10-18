@@ -68,121 +68,121 @@ class Test_rectangle(unittest.TestCase):
     def test_empty_width(self):
         """[Testing Raise type error when width is not setting]
         """
-        with self.assertRaises(TypeError) as _:
+        with self.assertRaises(TypeError):
             Rectangle()
 
     def test_empty_height(self):
         """[Testing Raise type error when height is not setting]
         """
-        with self.assertRaises(TypeError) as _:
+        with self.assertRaises(TypeError):
             Rectangle(1)
 
     def test_width_wrong_type(self):
         """[Testing Cases Width is not an integer, it must return the msj too]
         """
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle("1", 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(1.8, 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle([], 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle((1,), 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(True, 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle({"1": "test"}, 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle({1, 2, 3}, 5)
-        with self.assertRaisesRegex(TypeError, "width must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(complex(100), 5)
 
     def test_height_wrong_type(self):
         """[Testing Cases Width is not an integer, it must return the msj too]
         """
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, "1")
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, 1.8)
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, [])
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, (1,))
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, True)
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, {"1": "test"})
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, {1, 2, 3})
-        with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, complex(100))
 
     def test_x_wrong_type(self):
         """[Testing Cases x is not an integer, it must return the msj too]
         """
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, "1")
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, 1.8)
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, [])
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, (1,))
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, True)
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, {"1": "test"})
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, {1, 2, 3})
-        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(5, 10, complex(100))
 
     def test_y_wrong_type(self):
         """[Testing Cases y is not an integer, it must return the msj too]
         """
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, "1")
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, 1.8)
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, [])
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, (1,))
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, True)
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, {"1": "test"})
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, {1, 2, 3})
-        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(5, 10, 15, complex(100))
 
     def test_width_wrong_value(self):
         """[Testing case width wrong value]
         """
-        with self.assertRaisesRegex(ValueError, "width must be > 0") as _:
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             Rectangle(-10, 2, 3, 4, 5)
-        with self.assertRaisesRegex(ValueError, "width must be > 0") as _:
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             Rectangle(0, 2, 3, 4, 5)
 
     def test_height_wrong_value(self):
         """[Testing case height wrong value]
         """
-        with self.assertRaisesRegex(ValueError, "height must be > 0") as _:
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             Rectangle(1, -2, 3, 4, 5)
-        with self.assertRaisesRegex(ValueError, "height must be > 0") as _:
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
             Rectangle(1, 0, 3, 4, 5)
 
     def test_x_wrong_value(self):
         """[Testing case x wrong value]
         """
-        with self.assertRaisesRegex(ValueError, "x must be >= 0") as _:
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             Rectangle(1, 2, -3, 4, 5)
 
     def test_y_wrong_value(self):
         """[Testing case y wrong value]
         """
-        with self.assertRaisesRegex(ValueError, "y must be >= 0") as _:
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(1, 2, 3, -4, 5)
 
     def test_area_value(self):
@@ -196,11 +196,11 @@ class Test_rectangle(unittest.TestCase):
     def test_area_arguments(self):
         """[Testing when too many arguments are gived to area function]
         """
-        with self.assertRaises(TypeError) as _:
+        with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4).area(5, 2, 3)
-        with self.assertRaises(TypeError) as _:
+        with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4).area(5, 2)
-        with self.assertRaises(TypeError) as _:
+        with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4).area(5)
 
     def test_display_output(self):
@@ -211,19 +211,23 @@ class Test_rectangle(unittest.TestCase):
             self.rectangle1.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle1.width + "\n") * self.rectangle1.height)
+            catched, ("#" * self.rectangle1.width + "\n")
+            * self.rectangle1.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.rectangle1.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle2.width + "\n") * self.rectangle2.height)
+            catched, ("#" * self.rectangle2.width + "\n")
+            * self.rectangle2.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.rectangle1.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle3.width + "\n") * self.rectangle3.height)
+            catched, ("#" * self.rectangle3.width + "\n")
+            * self.rectangle3.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.rectangle1.display()
             catched = output.getvalue()
         self.assertEqual(
-            catched, ("#" * self.rectangle4.width + "\n") * self.rectangle4.height)
+            catched, ("#" * self.rectangle4.width + "\n")
+            * self.rectangle4.height)

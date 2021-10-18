@@ -52,7 +52,8 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """returns a list of instances from a file with json string representation"""
+        """returns a list of instances from a file with
+        json string representation"""
         file_name = "{}.json".format(cls.__name__)
         try:
             with open(file_name, mode="r", encoding="utf-8") as f:
@@ -89,16 +90,19 @@ class Base:
         """Deserializes in csv"""
         file_name = "{}.csv".format(cls.__name__)
         try:
-            with open(file_name, mode="r", encoding="utf-8", newline="") as csv_f:
+            with open(file_name, mode="r", encoding="utf-8", newline="")\
+                    as csv_f:
                 csv_obj = csv.reader(csv_f)
                 if cls.__name__ == "Rectangle":
                     destiny = ['id', 'width', 'height', 'x', 'y']
                     return [(cls.create(**{destiny[index]: int(el) for index,
-                                        el in enumerate(row)})) for row in csv_obj]
+                                        el in enumerate(row)}))
+                            for row in csv_obj]
                 elif cls.__name__ == "Square":
                     destiny = ['id', 'size', 'x', 'y']
                     return [(cls.create(**{destiny[index]: int(el) for index,
-                                        el in enumerate(row)})) for row in csv_obj]
+                                        el in enumerate(row)}))
+                            for row in csv_obj]
         except IOError:
             return []
 

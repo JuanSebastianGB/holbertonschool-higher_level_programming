@@ -76,14 +76,16 @@ class Rectangle(Base):
         return self.height * self.width
 
     def display(self):
-        """prints in stdout the Rectangle instance with the character # and offset x,y"""
+        """prints in stdout the Rectangle instance with
+        the character # and offset x,y"""
         print("\n" * self.y, end="")
         print(((" " * self.x) + "#" * self.width + '\n') * self.height, end="")
 
     def __str__(self):
-        """overriding the __str__ method so that it returns 
+        """overriding the __str__ method so that it returns
         [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"\
+            .format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """Update by assigning an argument to each attribute"""
@@ -113,4 +115,5 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """returns the dictionary representation of a Rectangle"""
-        return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height, 'width': self.width}
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}
