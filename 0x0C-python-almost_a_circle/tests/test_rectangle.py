@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """[Implementing Unittest for rectangle]
+    - Test setting form line ...
+    - Test Types from line ...
     """
 from typing import Type
 import unittest
@@ -99,3 +101,31 @@ class Test_rectangle(unittest.TestCase):
             Rectangle(5, (1,))
         with self.assertRaisesRegex(TypeError, "height must be an integer") as _:
             Rectangle(5, True)
+
+    def test_x_wrong_type(self):
+        """[Testing Cases x is not an integer, it must return the msj too]
+        """
+        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+            Rectangle(5, 10, "1")
+        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+            Rectangle(5, 10, 1.8)
+        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+            Rectangle(5, 10, [])
+        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+            Rectangle(5, 10, (1,))
+        with self.assertRaisesRegex(TypeError, "x must be an integer") as _:
+            Rectangle(5, 10, True)
+
+    def test_y_wrong_type(self):
+        """[Testing Cases y is not an integer, it must return the msj too]
+        """
+        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+            Rectangle(5, 10, 15, "1")
+        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+            Rectangle(5, 10, 15, 1.8)
+        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+            Rectangle(5, 10, 15, [])
+        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+            Rectangle(5, 10, 15, (1,))
+        with self.assertRaisesRegex(TypeError, "y must be an integer") as _:
+            Rectangle(5, 10, 15, True)
