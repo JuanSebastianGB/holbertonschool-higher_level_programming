@@ -294,3 +294,25 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(str(rectangle), "[Rectangle] (10) 40/0 - 20/30")
         rectangle.update(10, 20, 30, 40, 50)
         self.assertEqual(str(rectangle), "[Rectangle] (10) 40/50 - 20/30")
+
+    def test_tm_args(self):
+        """[Testing when are gived more than 5 values to the update function]
+        """
+        rectangle = Rectangle(1, 2)
+        rectangle.update(1, 2, 3, 4, 5, 6)
+        self.assertEqual(str(rectangle), "[Rectangle] (1) 4/5 - 2/3")
+
+    def test_tm_args(self):
+        """[Testing when are gived more than 5 values to the update function]
+        """
+        rectangle = Rectangle(1, 2)
+        rectangle.update(1, 2, 3, 4, 5, 6)
+        self.assertEqual(str(rectangle), "[Rectangle] (1) 4/5 - 2/3")
+
+    def test_tf_args(self):
+        """[Testing when are not gived arguments, that does not
+        modify anything]
+        """
+        rectangle = Rectangle(5, 8, 15, 25, 1)
+        rectangle.update()
+        self.assertEqual(str(rectangle), "[Rectangle] (1) 15/25 - 5/8")
