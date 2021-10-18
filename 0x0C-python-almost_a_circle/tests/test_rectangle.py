@@ -267,3 +267,11 @@ class Test_rectangle(unittest.TestCase):
             catched = output.getvalue()
         self.assertEqual(
             catched, f"[Rectangle] ({30:d}) {5:d}/{7:d} - {4:d}/{15:d}\n")
+
+    def test_str_right_output(self):
+        """[Testing str transformation of Rectangle]
+        """
+        self.assertEqual(str(self.rectangle1), "[Rectangle] (1) 0/0 - 4/15")
+        self.assertEqual(str(self.rectangle2), "[Rectangle] (2) 5/0 - 4/15")
+        self.assertEqual(str(self.rectangle3), "[Rectangle] (3) 5/7 - 4/15")
+        self.assertEqual(str(self.rectangle4), "[Rectangle] (30) 5/7 - 4/15")
