@@ -369,3 +369,16 @@ class Test_rectangle(unittest.TestCase):
             rectangle.update(100, 2, 2, 2, (1,))
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             rectangle.update(100, 2, 2, 2, {"1": "hellow"})
+
+    def wrong_values_updating(self):
+        """[Testing that value numbers are right using update function]
+        """
+        rectangle = Rectangle(1, 1, 1, 1, 101)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            rectangle.update(101, -100)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            rectangle.update(101, 100, -100)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            rectangle.update(101, 100, 100, -100)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            rectangle.update(101, 100, 100, 100, -100)
