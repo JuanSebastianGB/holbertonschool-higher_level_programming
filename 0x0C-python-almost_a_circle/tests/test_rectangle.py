@@ -333,7 +333,6 @@ class Test_rectangle(unittest.TestCase):
             rectangle.update(100, (1,), 2, 2, 2)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             rectangle.update(100, {"1": "hellow"}, 2, 2, 2)
-        rectangle = Rectangle(100, 2, 2, 2, 2)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             rectangle.update(100, 2, "2", 2, 2)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
