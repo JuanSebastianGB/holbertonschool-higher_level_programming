@@ -45,8 +45,9 @@ class Base:
         """writes the JSON string representation of list_objs to a file"""
         if list_objs is None:
             dicts = []
-        dicts = [el.to_dictionary() for el in list_objs]
-        file_name = "{}.json".format(cls.__name__)
+        else:
+            dicts = [el.to_dictionary() for el in list_objs]
+        file_name = f"{cls.__name__}.json"
         with open(file_name, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(dicts))
 
