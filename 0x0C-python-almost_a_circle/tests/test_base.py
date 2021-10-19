@@ -4,7 +4,19 @@
 from unittest.case import TestCase
 from models import base
 import json
+import pycodestyle
 Base = base.Base
+
+
+class Test_style(TestCase):
+    """[ Class for testing some stuff related with style and syntax]
+    """
+
+    def test_pycode(self):
+        foo = pycodestyle.StyleGuide(quiet=True).check_files([
+            'models/base.py'])
+        self.assertEqual(foo.total_errors, 0,
+                         "Found code style error (and warnings).")
 
 
 class Test_base(TestCase):
@@ -14,6 +26,18 @@ class Test_base(TestCase):
     def setUpClass(cls):
         cls.base_test1 = Base()
         cls.base_test2 = Base(50)
+
+    def test_id_values(self):
+        """[Testing some values for id]
+        """
+        Base()
+        Base()
+        base3 = Base()
+        self.assertEqual(base3.id, 4)
+        self.assertEqual(Base(50).id, 50)
+        self.assertEqual(Base(-6).id, -6)
+        self.assertEqual(Base(0).id, 0)
+        self.assertIsInstance(base3, Base)
 
     def test_empty_base(self):
         """[Testing empty base(), that must return by id]
