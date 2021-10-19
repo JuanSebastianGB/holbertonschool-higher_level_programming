@@ -382,6 +382,12 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(str(rectangle), "[Rectangle] (5) 150/50 - 500/200")
         rectangle.update(width=5000, id=300, height=3)
         self.assertEqual(str(rectangle), "[Rectangle] (300) 150/50 - 5000/3")
+        rectangle = Rectangle(1, 1, 1, 1, 1)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            rectangle.update(width=20, id=400)
+            print(rectangle)
+            catched = output.getvalue()
+        self.assertEqual(catched, "[Rectangle] (400) 1/1 - 20/1\n")
 
     def test_wrong_types_updating_kwargs(self):
         """[Testing wrong types updating kwargs]

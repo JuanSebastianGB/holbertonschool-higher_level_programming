@@ -324,6 +324,12 @@ class Test_square(unittest.TestCase):
         self.assertEqual(str(square), "[Square] (5) 150/50 - 200")
         square.update(size=300, x=78, id=32)
         self.assertEqual(str(square), "[Square] (32) 78/50 - 300")
+        square = Square(1, 1, 1, 1)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            square.update(size=20, id=400)
+            print(square)
+            catched = output.getvalue()
+        self.assertEqual(catched, "[Square] (400) 1/1 - 20\n")
 
     def test_wrong_types_updating_kwargs(self):
         """[Testing wrong types updating kwargs]
