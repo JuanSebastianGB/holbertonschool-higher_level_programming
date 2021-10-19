@@ -483,3 +483,19 @@ class Test_rectangle(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as _:
             Rectangle.save_to_file()
+
+    def test_for_create(self):
+        """[Testing output for create function]
+        """
+        rectangle = Rectangle.create(
+            **{"id": 1, "width": 2, "height": 3, "x": 4, "y": 5})
+        rectangle1 = Rectangle.create(
+            **{"id": 10, "width": 20, "height": 30, "x": 40, "y": 50})
+        self.assertEqual(str(rectangle), "[Rectangle] (1) 4/5 - 2/3")
+        self.assertEqual(str(rectangle1), "[Rectangle] (10) 40/50 - 20/30")
+
+    def test_create_empty(self):
+        """[Testing case create without arguments]
+        """
+        with self.assertRaises(TypeError) as _:
+            Rectangle().create()

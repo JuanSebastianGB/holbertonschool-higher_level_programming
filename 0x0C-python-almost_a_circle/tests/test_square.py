@@ -413,3 +413,19 @@ class Test_square(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as _:
             Square.save_to_file()
+
+    def test_for_create(self):
+        """[Testing output for create function]
+        """
+        square = Square.create(
+            **{"id": 1, "size": 3, "x": 4, "y": 5})
+        square1 = Square.create(
+            **{"id": 10, "size": 30, "x": 40, "y": 50})
+        self.assertEqual(str(square), "[Square] (1) 4/5 - 3")
+        self.assertEqual(str(square1), "[Square] (10) 40/50 - 30")
+
+    def test_create_empty(self):
+        """[Testing case create without arguments]
+        """
+        with self.assertRaises(TypeError) as _:
+            Square().create()
