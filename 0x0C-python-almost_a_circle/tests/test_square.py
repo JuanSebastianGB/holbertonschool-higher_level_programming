@@ -396,3 +396,14 @@ class Test_square(unittest.TestCase):
         with open("Square.json", "r") as f:
             ls = [el.to_dictionary() for el in squares]
             self.assertEqual(json.dumps(ls), f.read())
+
+    def test_empty_or_none_stf(self):
+        """[Testing the json string output in '[]' whe are gived
+        a None or a '[]']
+        """
+        Square.save_to_file([])
+        with open("Square.json", mode="r", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")
+        Square.save_to_file(None)
+        with open("Square.json", mode="r", encoding="utf-8") as f:
+            self.assertEqual(f.read(), "[]")
