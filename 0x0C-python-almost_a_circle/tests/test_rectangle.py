@@ -521,3 +521,15 @@ class Test_rectangle(unittest.TestCase):
             pass
         with open(file_name, mode="a", encoding="utf-8") as f:
             self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_tf_arguments_lff_nf(self):
+        """[Testing case when nor argument is gived to load_from_file function]
+        """
+        from os import remove
+
+        file_name = "Rectangle.json"
+        try:
+            remove(file_name)
+        except Exception as e:
+            pass
+        self.assertEqual(Rectangle.load_from_file(), [])
