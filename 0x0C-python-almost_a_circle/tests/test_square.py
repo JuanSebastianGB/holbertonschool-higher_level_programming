@@ -296,3 +296,64 @@ class Test_square(unittest.TestCase):
             square.update(101, 100, -100)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             square.update(101, 100, 100, -100)
+
+    def test_update_kwargs(self):
+        """[Testing update by sending kwargs]
+        """
+        square = Square(5, 5, 5, 1)
+        square.update(id=5)
+        self.assertEqual(str(square), "[Square] (5) 5/5 - 5")
+        square.update(y=50)
+        self.assertEqual(str(square), "[Square] (5) 5/50 - 5")
+        square.update(x=150)
+        self.assertEqual(str(square), "[Square] (5) 150/50 - 5")
+        square.update(size=200)
+        self.assertEqual(str(square), "[Square] (5) 150/50 - 200")
+        square.update(size=300, x=78, id=32)
+        self.assertEqual(str(square), "[Square] (32) 78/50 - 300")
+
+    def test_wrong_types_updating_kwargs(self):
+        """[Testing wrong types updating kwargs]
+        """
+        square = Square(1, 1, 1, 1, 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            square.update(size="98")
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            square.update(size=10.5)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            square.update(size=[])
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            square.update(size={})
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            square.update(size=(1,))
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            square.update(x="98")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            square.update(x=10.5)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            square.update(x=[])
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            square.update(x={})
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            square.update(x=(1,))
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            square.update(y="98")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            square.update(y=10.5)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            square.update(y=[])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            square.update(y={})
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            square.update(y=(1,))
+
+    def test_wrong_types_updating_kwargs(self):
+        """[Testing wrong values updating kwargs]
+        """
+        square = Square(1, 1, 1, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            square.update(size=-5)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            square.update(x=-5)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            square.update(y=-5)

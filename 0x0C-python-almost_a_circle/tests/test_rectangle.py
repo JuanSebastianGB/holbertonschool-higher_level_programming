@@ -352,3 +352,78 @@ class Test_rectangle(unittest.TestCase):
             rectangle.update(101, 100, 100, -100)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             rectangle.update(101, 100, 100, 100, -100)
+
+    def test_update_kwargs(self):
+        """[Testing update by sending kwargs]
+        """
+        rectangle = Rectangle(5, 5, 5, 5, 1)
+        rectangle.update(id=5)
+        self.assertEqual(str(rectangle), "[Rectangle] (5) 5/5 - 5/5")
+        rectangle.update(y=50)
+        self.assertEqual(str(rectangle), "[Rectangle] (5) 5/50 - 5/5")
+        rectangle.update(x=150)
+        self.assertEqual(str(rectangle), "[Rectangle] (5) 150/50 - 5/5")
+        rectangle.update(height=200)
+        self.assertEqual(str(rectangle), "[Rectangle] (5) 150/50 - 5/200")
+        rectangle.update(width=500)
+        self.assertEqual(str(rectangle), "[Rectangle] (5) 150/50 - 500/200")
+        rectangle.update(width=5000, id=300, height=3)
+        self.assertEqual(str(rectangle), "[Rectangle] (300) 150/50 - 5000/3")
+
+    def test_wrong_types_updating_kwargs(self):
+        """[Testing wrong types updating kwargs]
+        """
+        rectangle = Rectangle(1, 1, 1, 1, 1)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(width="98")
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(width=10.5)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(width=[])
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(width={})
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            rectangle.update(width=(1,))
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(height="98")
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(height=10.5)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(height=[])
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(height={})
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            rectangle.update(height=(1,))
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(x="98")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(x=10.5)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(x=[])
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(x={})
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            rectangle.update(x=(1,))
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(y="98")
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(y=10.5)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(y=[])
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(y={})
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            rectangle.update(y=(1,))
+
+    def test_wrong_types_updating_kwargs(self):
+        """[Testing wrong values updating kwargs]
+        """
+        rectangle = Rectangle(1, 1, 1, 1, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            rectangle.update(width=-5)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            rectangle.update(height=-5)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            rectangle.update(x=-5)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            rectangle.update(y=-5)
