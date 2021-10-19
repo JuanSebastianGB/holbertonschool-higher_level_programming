@@ -3,6 +3,7 @@
 """
 from unittest.case import TestCase
 from models import base
+import json
 Base = base.Base
 
 
@@ -37,3 +38,20 @@ class Test_base(TestCase):
         msj = "'Base' object has no attribute 'nb_objects'"
         with self.assertRaisesRegex(AttributeError, msj) as _:
             print(Base().nb_objects)
+
+    def test_to_json_string(self):
+        """[Testing to_json_string]
+        """
+        r1 = {"id": 1, "width": 2, "height": 3, "x": 4, "y": 5}
+        r2 = {"id": 10, "width": 20, "height": 30, "x": 40, "y": 50}
+        output = Base.to_json_string([r1, r2])
+        self.assertEqual(json.loads(output), [r1, r2])
+        self.assertEqual(type(output), str)
+
+    def test_tf_none_arguments_to_json_string(self):
+        """[Testing cases None and [] like inputs]
+        """
+        self.assertEqual(type(Base.to_json_string([])), str)
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(type(Base.to_json_string(None)), str)
+        self.assertEqual(Base.to_json_string([]), "[]")
