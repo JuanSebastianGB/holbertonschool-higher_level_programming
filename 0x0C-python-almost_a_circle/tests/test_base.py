@@ -67,3 +67,9 @@ class Test_base(TestCase):
         self.assertEqual(all([type(el) is dict for el in objects_json]), True)
         self.assertEqual(objects_json[0], {"height": 4, "width": 10, "id": 89})
         self.assertEqual(objects_json[1], {"height": 7, "width": 1, "id": 20})
+
+    def test_tf_none_arguments_from_json_string(self):
+        """[Testing empty or none inputs for the function from_json_string]
+        """
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string(""), [])
