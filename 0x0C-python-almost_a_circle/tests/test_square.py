@@ -357,3 +357,17 @@ class Test_square(unittest.TestCase):
             square.update(x=-5)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             square.update(y=-5)
+
+    def test_new_atribute_kwargs(self):
+        """[Testing if is inserted a non exitent key when updating with kwargs]
+        """
+        square = Square(1, 1, 1, 1)
+        square.update(new_one=27)
+        self.assertEqual(str(square), "[Square] (1) 1/1 - 1")
+
+    def test_mix_update(self):
+        """[Testing mixing args and kwargs in update]
+        """
+        square = Square(1, 1, 1, 1)
+        square.update(10, 20, 30, 40, new_one=50, id=1000)
+        self.assertEqual(str(square), "[Square] (10) 30/40 - 20")
