@@ -526,6 +526,8 @@ class Test_rectangle(unittest.TestCase):
         loaded = Rectangle.load_from_file()
         self.assertEqual(type(loaded), list)
         self.assertTrue(all([type(el) is Rectangle for el in loaded]))
+        [self.assertEqual(str(rectangles[index]), str(loaded[index]))
+         for index, el in enumerate(rectangles)]
 
     def test_tf_arguments_lff(self):
         """[Testing case when nor argument is gived to load_from_file function]

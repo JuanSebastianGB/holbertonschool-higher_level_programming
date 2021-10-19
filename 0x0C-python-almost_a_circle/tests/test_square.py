@@ -451,11 +451,13 @@ class Test_square(unittest.TestCase):
     def test_load_from_file(self):
         """[Testing load_to_file(), by checkink different outputs]
         """
-        rectangles = [Square(i, i, i, i) for i in range(1, 15)]
-        Square.save_to_file(rectangles)
+        squares = [Square(i, i, i, i) for i in range(1, 15)]
+        Square.save_to_file(squares)
         loaded = Square.load_from_file()
         self.assertEqual(type(loaded), list)
         self.assertTrue(all([type(el) is Square for el in loaded]))
+        [self.assertEqual(str(squares[index]), str(loaded[index]))
+         for index, el in enumerate(squares)]
 
     def test_tf_arguments_lff(self):
         """[Testing case when nor argument is gived to load_from_file function]
