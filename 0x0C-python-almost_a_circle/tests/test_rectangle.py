@@ -9,8 +9,20 @@ from models.rectangle import Rectangle
 from models.base import Base
 import contextlib
 import io
+import pycodestyle
 
 # Running test by python3 -m unittest discover tests -v
+
+
+class Test_style(unittest.TestCase):
+    """[ Class for testing some stuff related with style and syntax]
+    """
+
+    def test_pycode(self):
+        foo = pycodestyle.StyleGuide(quiet=True).check_files([
+            'models/rectangle.py'])
+        self.assertEqual(foo.total_errors, 0,
+                         "Found code style error (and warnings).")
 
 
 class Test_rectangle(unittest.TestCase):
