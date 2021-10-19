@@ -458,6 +458,10 @@ class Test_square(unittest.TestCase):
         self.assertTrue(all([type(el) is Square for el in loaded]))
         [self.assertEqual(str(squares[index]), str(loaded[index]))
          for index, el in enumerate(squares)]
+        [self.assertIsNot(squares[index], loaded[index])
+         for index, el in enumerate(squares)]
+        [self.assertNotEqual(squares[index], loaded[index])
+         for index, el in enumerate(squares)]
 
     def test_tf_arguments_lff(self):
         """[Testing case when nor argument is gived to load_from_file function]

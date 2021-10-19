@@ -528,6 +528,10 @@ class Test_rectangle(unittest.TestCase):
         self.assertTrue(all([type(el) is Rectangle for el in loaded]))
         [self.assertEqual(str(rectangles[index]), str(loaded[index]))
          for index, el in enumerate(rectangles)]
+        [self.assertIsNot(rectangles[index], loaded[index])
+         for index, el in enumerate(rectangles)]
+        [self.assertNotEqual(rectangles[index], loaded[index])
+         for index, el in enumerate(rectangles)]
 
     def test_tf_arguments_lff(self):
         """[Testing case when nor argument is gived to load_from_file function]
