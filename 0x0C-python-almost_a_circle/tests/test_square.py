@@ -429,3 +429,12 @@ class Test_square(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as _:
             Square().create()
+
+    def test_load_from_file(self):
+        """[Testing load_to_file(), by checkink different outputs]
+        """
+        rectangles = [Square(i, i, i, i) for i in range(1, 15)]
+        Square.save_to_file(rectangles)
+        loaded = Square.load_from_file()
+        self.assertEqual(type(loaded), list)
+        self.assertTrue(all([type(el) is Square for el in loaded]))

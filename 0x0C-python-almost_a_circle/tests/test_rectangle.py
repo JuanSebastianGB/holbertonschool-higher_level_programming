@@ -499,3 +499,12 @@ class Test_rectangle(unittest.TestCase):
         """
         with self.assertRaises(TypeError) as _:
             Rectangle().create()
+
+    def test_load_from_file(self):
+        """[Testing load_to_file(), by checkink different outputs]
+        """
+        rectangles = [Rectangle(i, i, i, i, i) for i in range(1, 15)]
+        Rectangle.save_to_file(rectangles)
+        loaded = Rectangle.load_from_file()
+        self.assertEqual(type(loaded), list)
+        self.assertTrue(all([type(el) is Rectangle for el in loaded]))
