@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """[Implementing Unittest for rectangle]
-    - Test setting form line ...
-    - Test Types from line ...
     """
 from logging import raiseExceptions
 from typing import Type
@@ -60,9 +58,6 @@ class Test_rectangle(unittest.TestCase):
     def test_id(self):
         """[Testing that the id assignation is right, considering Base]
         """
-        self.assertEqual(self.rectangle1.id, 1)
-        self.assertEqual(self.rectangle2.id, 2)
-        self.assertEqual(self.rectangle3.id, 3)
         self.assertEqual(self.rectangle4.id, 30)
 
     def test_empty_width(self):
@@ -252,21 +247,6 @@ class Test_rectangle(unittest.TestCase):
         """[Testing case __str__ output of the rectangle]
         """
         with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.rectangle1)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, f"[Rectangle] ({1:d}) {0:d}/{0:d} - {4:d}/{15:d}\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.rectangle2)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, f"[Rectangle] ({2:d}) {5:d}/{0:d} - {4:d}/{15:d}\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.rectangle3)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, f"[Rectangle] ({3:d}) {5:d}/{7:d} - {4:d}/{15:d}\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
             print(self.rectangle4)
             catched = output.getvalue()
         self.assertEqual(
@@ -275,9 +255,6 @@ class Test_rectangle(unittest.TestCase):
     def test_str_right_output(self):
         """[Testing str transformation of Rectangle]
         """
-        self.assertEqual(str(self.rectangle1), "[Rectangle] (1) 0/0 - 4/15")
-        self.assertEqual(str(self.rectangle2), "[Rectangle] (2) 5/0 - 4/15")
-        self.assertEqual(str(self.rectangle3), "[Rectangle] (3) 5/7 - 4/15")
         self.assertEqual(str(self.rectangle4), "[Rectangle] (30) 5/7 - 4/15")
 
     def test_update_by_args(self):
@@ -363,7 +340,7 @@ class Test_rectangle(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             rectangle.update(100, 2, 2, 2, {"1": "hellow"})
 
-    def wrong_values_updating(self):
+    def test_wrong_values_updating(self):
         """[Testing that value numbers are right using update function]
         """
         rectangle = Rectangle(1, 1, 1, 1, 101)

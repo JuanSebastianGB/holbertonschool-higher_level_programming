@@ -207,21 +207,6 @@ class Test_square(unittest.TestCase):
         """[Testing case __str__ output of the square]
         """
         with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.square1)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, "[Square] (41) 0/0 - 4\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.square2)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, "[Square] (42) 15/0 - 4\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
-            print(self.square3)
-            catched = output.getvalue()
-        self.assertEqual(
-            catched, "[Square] (43) 15/5 - 4\n")
-        with io.StringIO() as output, contextlib.redirect_stdout(output):
             print(self.square4)
             catched = output.getvalue()
         self.assertEqual(
@@ -301,7 +286,7 @@ class Test_square(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             square.update(100, 2, 2, {"1": "hellow"})
 
-    def wrong_values_updating(self):
+    def test_wrong_values_updating(self):
         """[Testing that value numbers are right using update function]
         """
         square = Square(1, 1, 1, 101)
