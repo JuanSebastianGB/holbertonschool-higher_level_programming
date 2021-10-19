@@ -371,3 +371,17 @@ class Test_square(unittest.TestCase):
         square = Square(1, 1, 1, 1)
         square.update(10, 20, 30, 40, new_one=50, id=1000)
         self.assertEqual(str(square), "[Square] (10) 30/40 - 20")
+
+    def test_to_dictionary(self):
+        """[Testing the output of to_dictionary function]
+        """
+        square = Square(1, 2, 3, 4)
+        self.assertEqual(square.to_dictionary(),
+                         {'id': 4, 'size': 1, 'x': 2, 'y': 3})
+
+    def test_tm_args_to_dictionary(self):
+        """[Testing if are passed functions to to_dictionary]
+        """
+        square = Square(1, 2, 3, 4)
+        with self.assertRaises(TypeError) as _:
+            square.to_dictionary(1, 2, 3)

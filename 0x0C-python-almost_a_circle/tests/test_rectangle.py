@@ -441,3 +441,17 @@ class Test_rectangle(unittest.TestCase):
         rectangle = Rectangle(1, 1, 1, 1, 1)
         rectangle.update(10, 20, 30, 40, new_one=50, id=1000)
         self.assertEqual(str(rectangle), "[Rectangle] (10) 40/1 - 20/30")
+
+    def test_to_dictionary(self):
+        """[Testing the output of to_dictionary function]
+        """
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(rectangle.to_dictionary(),
+                         {'x': 3, 'y': 4, 'id': 5, 'height': 2, 'width': 1})
+
+    def test_tm_args_to_dictionary(self):
+        """[Testing if are passed functions to to_dictionary]
+        """
+        rectangle = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaises(TypeError) as _:
+            rectangle.to_dictionary(1, 2, 3)
