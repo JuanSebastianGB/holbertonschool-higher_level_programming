@@ -10,18 +10,24 @@ Base = base.Base
 class Test_base(TestCase):
     """[Class for test all the functions of base class]
     """
+    @classmethod
+    def setUpClass(cls):
+        cls.base_test1 = Base()
+        cls.base_test2 = Base(50)
 
     def test_empty_base(self):
         """[Testing empty base(), that must return by id]
         """
-        obj = Base()
-        self.assertEqual(obj.id, 1)
+        self.assertIsNotNone(self.base_test1)
+        self.assertIsInstance(self.base_test1, Base)
+        self.assertEqual(self.base_test1.id, 1)
 
     def test_1_argument_base(self):
         """[Testing 1 argument base(), that must set the corresponding id]
         """
-        obj = Base(15)
-        self.assertEqual(obj.id, 15)
+        self.assertIsNotNone(self.base_test2)
+        self.assertIsInstance(self.base_test2, Base)
+        self.assertEqual(self.base_test2.id, 50)
 
     def test_tm_arguments(self):
         """[Testing too many arguments in Base]
