@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """[Implementing Unittest for rectangle]
     """
+import json
 from logging import raiseExceptions
 from typing import Type
 import unittest
@@ -448,6 +449,7 @@ class Test_rectangle(unittest.TestCase):
         rectangle = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(rectangle.to_dictionary(),
                          {'x': 3, 'y': 4, 'id': 5, 'height': 2, 'width': 1})
+        self.assertEqual(type(rectangle.to_dictionary()), dict)
 
     def test_tm_args_to_dictionary(self):
         """[Testing if are passed functions to to_dictionary]
@@ -455,3 +457,12 @@ class Test_rectangle(unittest.TestCase):
         rectangle = Rectangle(1, 2, 3, 4, 5)
         with self.assertRaises(TypeError) as _:
             rectangle.to_dictionary(1, 2, 3)
+
+    def test_save_to_file(self):
+        """[Testing function save_to_file]
+        """
+        rectangles = [Rectangle(i, i, i, i, i) for i in range(1, 10)]
+        Rectangle.save_to_file(rectangles)
+        with open("Rectangle.json", "r") as f:
+            ls = [el.to_dictionary() for el in rectangles]
+            self.assertEqual(json.dumps(ls), f.read())

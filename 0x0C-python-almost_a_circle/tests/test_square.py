@@ -10,6 +10,7 @@ from models.square import Square
 from models.base import Base
 import contextlib
 import io
+import json
 
 # Running test by python3 -m unittest discover tests -v
 
@@ -378,6 +379,7 @@ class Test_square(unittest.TestCase):
         square = Square(1, 2, 3, 4)
         self.assertEqual(square.to_dictionary(),
                          {'id': 4, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(type(square.to_dictionary()), dict)
 
     def test_tm_args_to_dictionary(self):
         """[Testing if are passed functions to to_dictionary]
@@ -385,3 +387,12 @@ class Test_square(unittest.TestCase):
         square = Square(1, 2, 3, 4)
         with self.assertRaises(TypeError) as _:
             square.to_dictionary(1, 2, 3)
+
+    def test_save_to_file(self):
+        """[Testing function save_to_file]
+        """
+        squares = [Square(i, i, i, i) for i in range(1, 10)]
+        Square.save_to_file(squares)
+        with open("Square.json", "r") as f:
+            ls = [el.to_dictionary() for el in squares]
+            self.assertEqual(json.dumps(ls), f.read())
