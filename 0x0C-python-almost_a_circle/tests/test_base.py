@@ -27,3 +27,13 @@ class Test_base(TestCase):
         """
         with self.assertRaises(TypeError) as _:
             Base(1, 2, 3)
+
+    def test_private(self):
+        """[Testing, trying to get a private atrubute]
+        """
+        msj = "'Base' object has no attribute '_Test_base__nb_objects'"
+        with self.assertRaisesRegex(AttributeError, msj) as _:
+            print(Base().__nb_objects)
+        msj = "'Base' object has no attribute 'nb_objects'"
+        with self.assertRaisesRegex(AttributeError, msj) as _:
+            print(Base().nb_objects)
