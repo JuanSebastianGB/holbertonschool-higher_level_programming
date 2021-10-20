@@ -519,7 +519,7 @@ class Test_rectangle(unittest.TestCase):
         a None]
         """
         Rectangle.save_to_file(None)
-        with open("Rectangle.json", mode="r", encoding="utf-8") as f:
+        with open("Rectangle.json", 'r') as f:
             self.assertEqual("[]", f.read())
 
     def test_no_args_save_to_file(self):
