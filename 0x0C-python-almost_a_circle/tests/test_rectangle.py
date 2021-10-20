@@ -72,6 +72,9 @@ class Test_rectangle(unittest.TestCase):
         """[Testing that the id assignation is right, considering Base]
         """
         self.assertEqual(self.rectangle4.id, 30)
+        self.assertEqual(Rectangle(1, 2, 3, 4, 500).id, 500)
+        self.assertEqual(Rectangle(1, 2, 3, 4, -500).id, -500)
+        self.assertEqual(Rectangle(1, 2, 3, 4, 0).id, 0)
 
     def test_empty_width(self):
         """[Testing Raise type error when width is not setting]
@@ -200,6 +203,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(self.rectangle2.area(), 4*15)
         self.assertEqual(self.rectangle3.area(), 4*15)
         self.assertEqual(self.rectangle4.area(), 4*15)
+        self.assertEqual(Rectangle(id=400, width=2, height=3).area(), 6)
 
     def test_area_arguments(self):
         """[Testing when too many arguments are gived to area function]
@@ -434,7 +438,7 @@ class Test_rectangle(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             rectangle.update(y=(1,))
 
-    def test_wrong_types_updating_kwargs(self):
+    def test_wrong_values_updating_kwargs(self):
         """[Testing wrong values updating kwargs]
         """
         rectangle = Rectangle(1, 1, 1, 1, 1)

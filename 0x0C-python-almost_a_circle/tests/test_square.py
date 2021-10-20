@@ -334,7 +334,7 @@ class Test_square(unittest.TestCase):
     def test_wrong_types_updating_kwargs(self):
         """[Testing wrong types updating kwargs]
         """
-        square = Square(1, 1, 1, 1, 1)
+        square = Square(1, 1, 1, 1)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             square.update(size="98")
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -366,7 +366,7 @@ class Test_square(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             square.update(y=(1,))
 
-    def test_wrong_types_updating_kwargs(self):
+    def test_wrong_values_updating_kwargs(self):
         """[Testing wrong values updating kwargs]
         """
         square = Square(1, 1, 1, 1)
