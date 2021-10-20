@@ -472,6 +472,11 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(rectangle.to_dictionary(),
                          {'x': 3, 'y': 4, 'id': 5, 'height': 2, 'width': 1})
         self.assertEqual(type(rectangle.to_dictionary()), dict)
+        self.assertTrue(type(rectangle.to_dictionary()) is dict)
+        rectangle2 = Rectangle(1, 1, 1, 1, 1)
+        rectangle2.update(**rectangle.to_dictionary())
+        self.assertEqual(str(rectangle), str(rectangle2))
+        self.assertNotEqual(rectangle, rectangle2)
 
     def test_tm_args_to_dictionary(self):
         """[Testing if are passed functions to to_dictionary]

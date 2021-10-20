@@ -398,6 +398,11 @@ class Test_square(unittest.TestCase):
         self.assertEqual(square.to_dictionary(),
                          {'id': 4, 'size': 1, 'x': 2, 'y': 3})
         self.assertEqual(type(square.to_dictionary()), dict)
+        self.assertTrue(type(square.to_dictionary()) is dict)
+        square2 = Square(1, 1, 1, 1)
+        square2.update(**square.to_dictionary())
+        self.assertEqual(str(square), str(square2))
+        self.assertNotEqual(square, square2)
 
     def test_tm_args_to_dictionary(self):
         """[Testing if are passed functions to to_dictionary]
