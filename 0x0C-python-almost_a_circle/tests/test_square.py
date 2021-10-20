@@ -235,6 +235,12 @@ class Test_square(unittest.TestCase):
         """[Testing str transformation of Square]
         """
         self.assertEqual(str(self.square4), "[Square] (7) 15/5 - 4")
+        self.assertEqual(str(Square(5, 10, 15, 200)),
+                         "[Square] (200) 10/15 - 5")
+        self.assertEqual(str(Square(20, 20)),
+                         "[Square] (93) 20/0 - 20")
+        self.assertEqual(str(Square(20, 20, 20)),
+                         "[Square] (94) 20/20 - 20")
 
     def test_update_by_args(self):
         """[Testing update square by args]
