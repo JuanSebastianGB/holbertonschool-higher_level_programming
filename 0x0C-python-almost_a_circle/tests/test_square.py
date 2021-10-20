@@ -463,6 +463,7 @@ class Test_square(unittest.TestCase):
         squares = [Square(i, i, i, i) for i in range(1, 15)]
         Square.save_to_file(squares)
         loaded = Square.load_from_file()
+        self.assertEqual(len(loaded), 14)
         self.assertEqual(type(loaded), list)
         self.assertTrue(all([type(el) is Square for el in loaded]))
         [self.assertEqual(str(squares[index]), str(loaded[index]))

@@ -523,7 +523,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertIsNot(first, rectangle)
         self.assertIsNot(second, rectangle1)
         self.assertNotEqual(first, rectangle)
-        self.assertNotEqual(second, rectangle1)        
+        self.assertNotEqual(second, rectangle1)
 
     def test_create_empty(self):
         """[Testing case create without arguments]
@@ -538,6 +538,7 @@ class Test_rectangle(unittest.TestCase):
         Rectangle.save_to_file(rectangles)
         loaded = Rectangle.load_from_file()
         self.assertEqual(type(loaded), list)
+        self.assertEqual(len(loaded), 14)
         self.assertTrue(all([type(el) is Rectangle for el in loaded]))
         [self.assertEqual(str(rectangles[index]), str(loaded[index]))
          for index, el in enumerate(rectangles)]
