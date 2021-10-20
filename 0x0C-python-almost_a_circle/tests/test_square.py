@@ -160,6 +160,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(self.square2.area(), 4**2)
         self.assertEqual(self.square3.area(), 4**2)
         self.assertEqual(self.square4.area(), 4**2)
+        self.assertEqual(Square(id=400, size=3).area(), 3**2)
 
     def test_area_arguments(self):
         """[Testing when too many arguments are gived to area function]
@@ -175,6 +176,11 @@ class Test_square(unittest.TestCase):
         """[Testing the displaying output of the function display, by catching
         into a variable using 'with' with io and contextlib modules]
         """
+        square = Square(5, 5, 5, 169)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            square.display()
+            catched = output.getvalue()
+        self.assertEqual(catched, "\n" * 5 + (" " * 5 + "#" * 5 + "\n") * 5)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.square1.display()
             catched = output.getvalue()
@@ -195,7 +201,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(
             catched, "\n" * self.square3.y +
             (" " * self.square3.x + "#" * self.square3.size + "\n")
-            * self.square2.size)
+            * self.square3.size)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.square4.display()
             catched = output.getvalue()

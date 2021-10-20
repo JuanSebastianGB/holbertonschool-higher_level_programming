@@ -2,8 +2,6 @@
 """[Implementing Unittest for rectangle]
     """
 import json
-from logging import raiseExceptions
-from typing import Type
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
@@ -219,6 +217,12 @@ class Test_rectangle(unittest.TestCase):
         """[Testing the displaying output of the function display, by catching
         into a variable using 'with' with io and contextlib modules]
         """
+        rectangle = Rectangle(5, 5, 5, 5, 169)
+        with io.StringIO() as output, contextlib.redirect_stdout(output):
+            rectangle.display()
+            catched = output.getvalue()
+        self.assertEqual(catched, "\n" * 5 + (" " * 5 + "#" * 5 + "\n") * 5)
+
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.rectangle1.display()
             catched = output.getvalue()
@@ -239,7 +243,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(
             catched, "\n" * self.rectangle3.y +
             (" " * self.rectangle3.x + "#" * self.rectangle3.width + "\n")
-            * self.rectangle2.height)
+            * self.rectangle3.height)
         with io.StringIO() as output, contextlib.redirect_stdout(output):
             self.rectangle4.display()
             catched = output.getvalue()
