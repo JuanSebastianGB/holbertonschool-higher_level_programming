@@ -440,12 +440,16 @@ class Test_square(unittest.TestCase):
     def test_for_create(self):
         """[Testing output for create function]
         """
-        square = Square.create(
-            **{"id": 1, "size": 3, "x": 4, "y": 5})
-        square1 = Square.create(
-            **{"id": 10, "size": 30, "x": 40, "y": 50})
+        first = {"id": 1, "size": 3, "x": 4, "y": 5}
+        second = {"id": 10, "size": 30, "x": 40, "y": 50}
+        square = Square.create(**first)
+        square1 = Square.create(**second)
         self.assertEqual(str(square), "[Square] (1) 4/5 - 3")
         self.assertEqual(str(square1), "[Square] (10) 40/50 - 30")
+        self.assertIsNot(first, square)
+        self.assertIsNot(second, square1)
+        self.assertNotEqual(first, square)
+        self.assertNotEqual(second, square1)
 
     def test_create_empty(self):
         """[Testing case create without arguments]

@@ -514,12 +514,16 @@ class Test_rectangle(unittest.TestCase):
     def test_for_create(self):
         """[Testing output for create function]
         """
-        rectangle = Rectangle.create(
-            **{"id": 1, "width": 2, "height": 3, "x": 4, "y": 5})
-        rectangle1 = Rectangle.create(
-            **{"id": 10, "width": 20, "height": 30, "x": 40, "y": 50})
+        first = {"id": 1, "width": 2, "height": 3, "x": 4, "y": 5}
+        second = {"id": 10, "width": 20, "height": 30, "x": 40, "y": 50}
+        rectangle = Rectangle.create(**first)
+        rectangle1 = Rectangle.create(**second)
         self.assertEqual(str(rectangle), "[Rectangle] (1) 4/5 - 2/3")
         self.assertEqual(str(rectangle1), "[Rectangle] (10) 40/50 - 20/30")
+        self.assertIsNot(first, rectangle)
+        self.assertIsNot(second, rectangle1)
+        self.assertNotEqual(first, rectangle)
+        self.assertNotEqual(second, rectangle1)        
 
     def test_create_empty(self):
         """[Testing case create without arguments]
