@@ -7,6 +7,7 @@
     """
 import json
 import csv
+from turtle import mainloop
 
 
 class Base:
@@ -108,4 +109,8 @@ class Base:
 
     def draw(list_rectangles, list_squares):
         """opens a window and draws all the Rectangles and Squares"""
-        pass
+        import matplotlib as mpl
+        mpl.use('Agg')
+        import turtle
+        
+        mainloop()

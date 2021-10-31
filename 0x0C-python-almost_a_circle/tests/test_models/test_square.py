@@ -238,9 +238,9 @@ class Test_square(unittest.TestCase):
         self.assertEqual(str(Square(5, 10, 15, 200)),
                          "[Square] (200) 10/15 - 5")
         self.assertEqual(str(Square(20, 20)),
-                         "[Square] (93) 20/0 - 20")
+                         "[Square] (28) 20/0 - 20")
         self.assertEqual(str(Square(20, 20, 20)),
-                         "[Square] (94) 20/20 - 20")
+                         "[Square] (29) 20/20 - 20")
 
     def test_update_by_args(self):
         """[Testing update square by args]
@@ -446,7 +446,7 @@ class Test_square(unittest.TestCase):
         """
         Square.save_to_file(None)
         with open("Square.json", 'r') as f:
-            self.assertEqual("[]", f.read())
+            self.assertEqual(f.read(), "[]")
 
     def test_no_args_save_to_file(self):
         """[Testing when save_to_file has not arguments]

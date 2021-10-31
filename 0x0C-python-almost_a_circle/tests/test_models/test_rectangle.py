@@ -280,11 +280,11 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(str(Rectangle(5, 10, 15, 20, 600)),
                          "[Rectangle] (600) 15/20 - 5/10")
         self.assertEqual(str(Rectangle(20, 20)),
-                         "[Rectangle] (37) 0/0 - 20/20")
+                         "[Rectangle] (31) 0/0 - 20/20")
         self.assertEqual(str(Rectangle(20, 20, 20)),
-                         "[Rectangle] (38) 20/0 - 20/20")
+                         "[Rectangle] (32) 20/0 - 20/20")
         self.assertEqual(str(Rectangle(20, 20, 20, 20)),
-                         "[Rectangle] (39) 20/20 - 20/20")
+                         "[Rectangle] (33) 20/20 - 20/20")
 
     def test_update_by_args(self):
         """[Testing update rectangle by args]
@@ -519,8 +519,8 @@ class Test_rectangle(unittest.TestCase):
         a None]
         """
         Rectangle.save_to_file(None)
-        with open("Rectangle.json", 'r') as f:
-            self.assertEqual("[]", f.read())
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
 
     def test_no_args_save_to_file(self):
         """[Testing when save_to_file has not arguments]
