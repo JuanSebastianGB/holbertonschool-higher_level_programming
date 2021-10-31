@@ -2,6 +2,7 @@
 """[Implementing Unittest for rectangle]
     """
 import json
+from os import name
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
@@ -518,9 +519,17 @@ class Test_rectangle(unittest.TestCase):
         """[Testing the json string output in '[]' when are gived
         a None]
         """
+        import os
         Rectangle.save_to_file(None)
+        current_work_dir = os.getcwd()
+        self.assertTrue(os.path.isfile(
+            current_work_dir + "/" + "Rectangle.json"))
         with open("Rectangle.json", "r") as f:
-            self.assertEqual(f.read(), "[]")
+            readed = f.read()
+        self.assertIsInstance(readed, str)
+        self.assertEqual(readed, '[]')
+        self.assertEqual("Rectangle.json", f.name)
+        os.remove(current_work_dir + "/" + "Rectangle.json")
 
     def test_no_args_save_to_file(self):
         """[Testing when save_to_file has not arguments]
