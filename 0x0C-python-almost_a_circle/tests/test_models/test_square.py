@@ -238,9 +238,9 @@ class Test_square(unittest.TestCase):
         self.assertEqual(str(Square(5, 10, 15, 200)),
                          "[Square] (200) 10/15 - 5")
         self.assertEqual(str(Square(20, 20)),
-                         "[Square] (28) 20/0 - 20")
+                         "[Square] (93) 20/0 - 20")
         self.assertEqual(str(Square(20, 20, 20)),
-                         "[Square] (29) 20/20 - 20")
+                         "[Square] (94) 20/20 - 20")
 
     def test_update_by_args(self):
         """[Testing update square by args]
