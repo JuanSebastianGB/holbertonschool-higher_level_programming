@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """[Implementing Unittest for base]
 """
-from unittest.case import TestCase
+from unittest import TestCase
 from models import base
 import json
 import pycodestyle
