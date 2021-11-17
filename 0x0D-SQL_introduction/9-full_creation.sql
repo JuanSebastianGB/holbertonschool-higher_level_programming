@@ -1,4 +1,4 @@
-0;10;1c-- creates a table second_table in the database hbtn_0c_0 in your MySQL server
+-- creates a table second_table in the database hbtn_0c_0 in your MySQL server
 -- and add multiples rows.
 -- second_table description:
 -- id INT
