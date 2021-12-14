@@ -1,3 +1,3 @@
 #!/usr/bin/node
 const inputs = process.argv;
-console.log(`${inputs[3]} is ${inputs[4]}`);
+console.log(`${inputs[2]} is ${inputs[3]}`);
