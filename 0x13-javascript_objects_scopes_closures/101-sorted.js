@@ -3,11 +3,11 @@ const dict = require('./101-data').dict;
 const newDict = {};
 let value;
 for (const key in dict) {
-  value = dict[key];
+  console.log(value);
   if (newDict[value] !== undefined) {
     newDict[value].push(key);
   } else {
-    newDict[value] = [];
+    newDict[value] = [key];
   }
 }
 console.log(newDict);
