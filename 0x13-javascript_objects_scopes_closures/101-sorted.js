@@ -1,9 +1,10 @@
 #!/usr/bin/node
 const dict = require('./101-data').dict;
+console.log(dict);
 const newDict = {};
 let value;
 for (const key in dict) {
-  console.log(value);
+  value = dict[key];
   if (newDict[value] !== undefined) {
     newDict[value].push(key);
   } else {
