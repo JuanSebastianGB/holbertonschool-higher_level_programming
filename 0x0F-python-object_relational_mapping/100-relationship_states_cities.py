@@ -5,8 +5,8 @@
 from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from relationship_city import City, Base
 from relationship_state import State
+from relationship_city import City, Base
 
 if __name__ == '__main__':
     """Main function
@@ -24,7 +24,6 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     session.add(
-        City(name='San Francisco',
-             state=State(name='California')))
+        City(name='San Francisco', state=State(name='California')))
     session.commit()
     session.close()

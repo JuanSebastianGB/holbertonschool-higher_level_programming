@@ -2,8 +2,7 @@
 """Defines city model
     """
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, Integer
-from sqlalchemy.sql.schema import ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey
 
 Base = declarative_base()
 
