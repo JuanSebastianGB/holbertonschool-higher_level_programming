@@ -15,8 +15,8 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(user=MY_USER, passwd=MY_PWD, db=MY_DB)
     cur = db.cursor()
-    cur.execute(f'SELECT id, name FROM states WHERE name\
-                = "{argv[4]}" ORDER BY states.id ASC')
+    cur.execute('SELECT id, name FROM states WHERE name\
+                = "{}" ORDER BY states.id ASC'.format(argv[4]))
     result = cur.fetchall()
     if result:
         [print(row) for row in result]
