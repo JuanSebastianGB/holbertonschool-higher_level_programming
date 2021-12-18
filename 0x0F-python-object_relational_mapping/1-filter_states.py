@@ -18,6 +18,6 @@ if __name__ == '__main__':
                 ORDER BY states.id ASC")
     result = cur.fetchall()
     if result:
-        [print(row) for row in result]
+        [print(row) for row in result if row[1][0] == 'N']
     cur.close()
     db.close()
