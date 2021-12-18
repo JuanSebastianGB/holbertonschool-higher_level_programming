@@ -19,6 +19,6 @@ if __name__ == "__main__":
     LIKE "%{}%" ORDER BY states.id ASC'.format(argv[4]))
     result = cur.fetchall()
     if result:
-        [print(row) for row in result]
+        [print(row) for row in result if row[1] == argv[4]]
     cur.close()
     db.close()
