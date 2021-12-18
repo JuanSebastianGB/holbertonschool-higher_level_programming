@@ -7,7 +7,6 @@ from sqlalchemy.orm import relationship
 from relationship_city import Base, City
 
 
-
 class State(Base):
     """This is the schema of state entity in the db
     """
