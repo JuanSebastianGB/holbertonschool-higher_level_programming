@@ -14,9 +14,10 @@ if __name__ == '__main__':
     MY_DB = argv[3]
     db = MySQLdb.connect(user=MY_USER, passwd=MY_PASS, db=MY_DB)
     cur = db.cursor()
-    cur.execute("""SELECT id, name FROM states WHERE name LIKE 'N%'
-                ORDER BY states.id ASC""")
+    cur.execute("SELECT id, name FROM states WHERE name LIKE 'N%'\
+                ORDER BY states.id ASC")
     result = cur.fetchall()
-    [print(row) for row in result]
+    if result:
+        [print(row) for row in result]
     cur.close()
     db.close()
