@@ -25,7 +25,6 @@ if __name__ == '__main__':
     states = session.query(State)
     for state in states:
         print(f'{state.id}: {state.name}')
-        cities = session.query(City).filter(City.state_id == state.id)
-        for city in cities:
+        for city in state.cities:
             print(' '*4+f'{city.id}: {city.name}')
     session.close()
