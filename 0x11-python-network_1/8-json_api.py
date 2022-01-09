@@ -20,7 +20,7 @@ if __name__ == '__main__':
         print('No result')
     else:
         q = sys.argv[1]
-        response = requests.post('http://0.0.0.0:5000/search_user', {"q": q})
+        response = requests.post('http://0.0.0.0:5000/search_user', data={"q": q})
         dictionary = response.json()
         if dictionary.get('id'):
             print('[{}] {}'.format(dictionary.get('id'), dictionary
