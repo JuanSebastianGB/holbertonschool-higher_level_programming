@@ -9,4 +9,4 @@ if __name__ == '__main__':
     request = imported.Request(sys.argv[1])
     with imported.urlopen(request) as response:
         headers = response.headers
-        print(dict(headers)['X-Request-Id'])
+        print(headers.get('X-Request-Id'))
