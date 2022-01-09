@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Implementing an algorithm to find a peak"""
+
 
 def find_peak(list_of_integers):
     """[finds a peak in a list of unsorted integers.]
@@ -9,7 +11,7 @@ def find_peak(list_of_integers):
         return list_of_integers[0]
     if len(list_of_integers) == 2:
         return max(list_of_integers)
-    
+
     middle_position = len(list_of_integers) // 2
     middle_point = list_of_integers[middle_position]
     right_point = list_of_integers[middle_position + 1]
