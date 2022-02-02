@@ -5,7 +5,7 @@ const url = process.argv[2];
 
 const FilterFunction = (data) => {
   const result = data.filter(characters => {
-    return characters === 'https://swapi-api.hbtn.io/api/people/18/';
+    return characters.includes('18');
   });
   return result.length;
 };
