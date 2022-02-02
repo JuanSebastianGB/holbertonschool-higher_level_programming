@@ -7,6 +7,6 @@ const url = process.argv[2];
 const filename = process.argv[3];
 
 request(url, (err, data, body) => {
-  if (err) return;
-  fs.writeFile(filename, body, (error, response) => { console.log(error); });
+  if (err) console.log(err);
+  fs.writeFile(filename, body, 'utf-8', (e) => { });
 });
