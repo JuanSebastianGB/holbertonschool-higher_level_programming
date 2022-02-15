@@ -3,7 +3,7 @@ window.onload = () => {
 };
 const getMovies = async () => {
   const url = 'https://swapi-api.hbtn.io/api/films/?format=json';
-  const movies = $.get(url);
+  const movies = await $.get(url);
   return movies;
 };
 const printTitles = async () => {
