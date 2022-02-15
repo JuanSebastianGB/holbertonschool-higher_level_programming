@@ -1,7 +1,7 @@
 window.onload = function () {
-  setRedHeaderClass();
+  toggleRedBlueHeader();
 };
-function setRedHeaderClass () {
+function toggleRedBlueHeader () {
   $('div#toggle_header').click(function () {
     $('header').toggleClass('red green');
   });
