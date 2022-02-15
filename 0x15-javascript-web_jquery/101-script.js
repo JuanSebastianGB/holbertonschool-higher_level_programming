@@ -1,3 +1,5 @@
+const $ = window.jQuery;
+
 $('document').ready(() => {
   addItem();
   removeItem();

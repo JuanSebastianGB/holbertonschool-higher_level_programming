@@ -1,3 +1,4 @@
+const $ = window.jQuery;
 $('document').ready(function () {
   translate();
   translateByEnter();
